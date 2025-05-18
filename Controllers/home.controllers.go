@@ -9,20 +9,14 @@ type Home struct{}
 
 func (h *Home) GET(Session *Server.Session) {
 	if err := Session.RenderEngine.RenderTemplate("home.php", Server.TemplateData{
-		"Title":   "Pritam Dutta",
-		"Heading": "Pritam Dutta",
-		"NavItems": []components.NavItems{
-			{Name: "Home", Href: "#home", Disabled: false},
-			{Name: "About Me", Href: "#about-me", Disabled: false},
-			{Name: "Skills", Href: "#skills", Disabled: false},
-			{Name: "Experience", Href: "#experience", Disabled: false},
-			{Name: "Projects", Href: "#projects", Disabled: false},
-			{Name: "Blogs", Href: "/blogs", Disabled: false},
-			{Name: "DropDown", Href: "#", Disabled: false, IsDropDown: true, DropDown: []components.DropDown{
-				{Name: "Dropdown1", Href: "#"},
-				{Name: "Dropdown2", Href: "#"},
-			}},
-		},
+		"Title":       "Pritam Dutta",
+		"Heading":     "Pritam Dutta",
+		"NavItems":    components.NavItems,
+		"Hero":        components.Hero,
+		"AboutMe":     components.AboutMe,
+		"Skills":      components.Skills,
+		"Experiences": components.Experiences,
+		"Projects":    components.Projects,
 	}); err != nil {
 		Session.RenderEngine.Render(err.Error())
 	}
