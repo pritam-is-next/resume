@@ -3,7 +3,7 @@ package main
 import (
 	Controllers "github.com/pritam-is-next/resume/Controllers"
 
-	server "github.com/pritam-is-next/resume/Server"
+	server "github.com/vrianta/Server"
 )
 
 func main() {

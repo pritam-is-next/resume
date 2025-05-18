@@ -2,7 +2,7 @@ package Controllers
 
 import (
 	components "github.com/pritam-is-next/resume/Components"
-	Server "github.com/pritam-is-next/resume/Server"
+	Server "github.com/vrianta/Server"
 )
 
 type Home struct{}
