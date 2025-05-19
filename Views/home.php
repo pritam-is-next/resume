@@ -80,9 +80,9 @@
                         <h2 class="mb-3">About Me</h2>
                         <p class="lead"><?= $$AboutMe->AboutMe ?></p>
                         <ul class="list-unstyled mt-3">
-                            <li><strong>Email:</strong> {{$$ContactDetails->Email}}</li>
-                            <li><strong>Location:</strong> {{$$ContactDetails->Location}}</li>
-                            <li><strong>Phone:</strong> {{$$ContactDetails->Phone}}</li>
+                            <li><strong>Email:</strong> <?= $$ContactDetails->Email ?></li>
+                            <li><strong>Location:</strong> <?= $$ContactDetails->Location ?></li>
+                            <li><strong>Phone:</strong> <?= $$ContactDetails->Phone ?></li>
                         </ul>
                         <a href="#skills" class="btn btn-primary mt-3">Skills</a>
                     </div>
