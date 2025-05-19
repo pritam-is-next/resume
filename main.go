@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	server.New("localHost", "1080", server.Routes{
+	server.New("", "1080", server.Routes{
 		"/": &Controllers.Home{},
 	}, &server.Config{
 		JS_Folders: []string{
