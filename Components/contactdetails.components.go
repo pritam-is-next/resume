@@ -3,6 +3,7 @@ package components
 var ContactDetails = struct {
 	Email     string
 	Github    string
+	GithubVrianta string
 	LinkedIn  string
 	Facebook string
 	Twitter   string

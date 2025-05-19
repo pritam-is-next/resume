@@ -191,6 +191,12 @@
                                 <a href="<?= $$ContactDetails->Instagram ?>" class="text-light me-3 social-icon">
                                     <i class="bi bi-instagram fs-4"></i>
                                 </a>
+                                <a href="<?= $$ContactDetails->GithubVrianta ?>" class="text-light me-3 social-icon">
+                                    <i class="bi bi-github fs-4"></i>
+                                </a>
+                                <a href="<?= $$ContactDetails->Github ?>" class="text-light me-3 social-icon">
+                                    <i class="bi bi-github fs-4"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
