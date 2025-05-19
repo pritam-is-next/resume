@@ -1,0 +1,47 @@
+name: pritam_dutta_resume
+services:
+  pritam-resume:
+    cpu_shares: 10
+    command: []
+    container_name: Pritam-Resume
+    deploy:
+      resources:
+        limits:
+          memory: 2048M
+    entrypoint:
+      - /bin/bash
+      - -c
+      - " apt update && apt install -y build-essential gcc libc6-dev libc-dev &&
+        cd /usr/src/ && apt install gcc -y && go mod tidy && go build && ./resume"
+    environment:
+    hostname: pritam-resume
+    image: golang:1.24.3
+    labels:
+      icon: https://icon.casaos.io/main/all/go-app.png
+    ports:
+      - target: 1080
+        published: "1080"
+        protocol: tcp
+    privileged: true
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /home/pritamresume
+        target: /usr/src
+    working_dir: /usr/src
+    devices: []
+    cap_add: []
+    network_mode: bridge
+x-casaos:
+  author: self
+  category: self
+  hostname: ""
+  icon: https://icon.casaos.io/main/all/go-app.png
+  index: /
+  is_uncontrolled: false
+  port_map: "1080"
+  scheme: http
+  store_app_id: compassionate_rally
+  title:
+    custom: Pritam Folio
+    en_us: go-app
