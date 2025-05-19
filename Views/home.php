@@ -80,11 +80,11 @@
                         <h2 class="mb-3">About Me</h2>
                         <p class="lead"><?= $$AboutMe->AboutMe ?></p>
                         <ul class="list-unstyled mt-3">
-                            <li><strong>Email:</strong> pritam.dutta@vrianta.in</li>
-                            <li><strong>Location:</strong> Kolkata, India</li>
-                            <li><strong>Phone:</strong> +91 9163841954</li>
+                            <li><strong>Email:</strong> {{$$ContactDetails->Email}}</li>
+                            <li><strong>Location:</strong> {{$$ContactDetails->Location}}</li>
+                            <li><strong>Phone:</strong> {{$$ContactDetails->Phone}}</li>
                         </ul>
-                        <a href="skills" class="btn btn-primary mt-3">Skills</a>
+                        <a href="#skills" class="btn btn-primary mt-3">Skills</a>
                     </div>
                 </div>
             </div>
@@ -175,21 +175,20 @@
                     <div class="col-md-6 mb-4 d-flex align-items-center" style="background: transparent;">
                         <div class="w-100 text-start px-4">
                             <h4>Get in Touch</h4>
-                            <p class="mb-1"><strong>Email:</strong> <a href="mailto:your.email@example.com"
-                                    class="text-light">your.email@example.com</a></p>
-                            <p class="mb-1"><strong>Phone:</strong> <a href="tel:+1234567890" class="text-light">+1
-                                    (234) 567-890</a></p>
-                            <p class="mb-0"><strong>Location:</strong> Your City, Your Country</p>
+                            <p class="mb-1"><strong>Email:</strong> <a href="mailto:<?= $$ContactDetails->Email ?>"
+                                    class="text-light"><?= $$ContactDetails->Email ?></a></p>
+                            <p class="mb-1"><strong>Phone:</strong> <a href="tel:<?= $$ContactDetails->Phone ?>" class="text-light"><?= $$ContactDetails->Phone ?></a></p>
+                            <p class="mb-0"><strong>Location:</strong> <?= $$ContactDetails->Location ?></p>
                             <hr class="border-light">
                             <!-- Social Media Links -->
                             <div class="d-flex">
-                                <a href="https://facebook.com/yourprofile" class="text-light me-3 social-icon">
+                                <a href="<?= $$ContactDetails->Facebook ?>" class="text-light me-3 social-icon">
                                     <i class="bi bi-facebook fs-4"></i>
                                 </a>
-                                <a href="https://twitter.com/yourprofile" class="text-light me-3 social-icon">
-                                    <i class="bi bi-twitter fs-4"></i>
+                                <a href="<?= $$ContactDetails->LinkedIn ?>" class="text-light me-3 social-icon">
+                                    <i class="bi bi-linkedin fs-4"></i>
                                 </a>
-                                <a href="https://instagram.com/yourprofile" class="text-light me-3 social-icon">
+                                <a href="<?= $$ContactDetails->Instagram ?>" class="text-light me-3 social-icon">
                                     <i class="bi bi-instagram fs-4"></i>
                                 </a>
                             </div>

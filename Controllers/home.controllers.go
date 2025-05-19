@@ -9,14 +9,15 @@ type Home struct{}
 
 func (h *Home) GET(Session *Server.Session) {
 	if err := Session.RenderEngine.RenderTemplate("home.php", Server.TemplateData{
-		"Title":       "Pritam Dutta",
-		"Heading":     "Pritam Dutta",
-		"NavItems":    components.NavItems,
-		"Hero":        components.Hero,
-		"AboutMe":     components.AboutMe,
-		"Skills":      components.Skills,
-		"Experiences": components.Experiences,
-		"Projects":    components.Projects,
+		"Title":          "Pritam Dutta",
+		"Heading":        "Pritam Dutta",
+		"NavItems":       components.NavItems,
+		"Hero":           components.Hero,
+		"AboutMe":        components.AboutMe,
+		"Skills":         components.Skills,
+		"Experiences":    components.Experiences,
+		"Projects":       components.Projects,
+		"ContactDetails": components.ContactDetails,
 	}); err != nil {
 		Session.RenderEngine.Render(err.Error())
 	}
