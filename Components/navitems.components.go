@@ -16,7 +16,7 @@ var NavItems = []struct {
 	{Name: "Skills", Href: "#skills", Disabled: false},
 	{Name: "Experience", Href: "#experience", Disabled: false},
 	{Name: "Projects", Href: "#projects", Disabled: false},
-	{Name: "Contact", Href: "#contact", Disabled: false},
+	{Name: "Contact", Href: "#contact-me", Disabled: false},
 	// {Name: "DropDown", Href: "#", Disabled: false, DropDown: []DropDown{
 	// 	{Name: "Dropdown1", Href: "#"},
 	// 	{Name: "Dropdown2", Href: "#"},
