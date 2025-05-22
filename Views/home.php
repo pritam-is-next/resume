@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/Css/main.css">
 </head>
 
-<body data-bs-theme="dark">
+<body data-bs-theme="dark" data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="50">
     <header class="sticky-top">
         <nav class="navbar navbar-expand-lg navbar-light bg-body">
             <div class="container">
@@ -22,6 +22,7 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <!-- Navigation Items which are going to be shown in the navigation bar -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <?php foreach ($$NavItems as $key => $NavItem): ?>
