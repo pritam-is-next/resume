@@ -9,6 +9,7 @@ import (
 func main() {
 	server.New("", "1080", server.Routes{
 		"/": &Controllers.Home{},
+		"/admin": &Controllers.Admin{},
 	}, &server.Config{
 		JS_Folders: []string{
 			"Js",
@@ -19,6 +20,6 @@ func main() {
 		Static_folders: []string{
 			"Static",
 		},
-		Views_folder: "./Views",
+		Views_folder: "Views",
 	}).Start()
 }
