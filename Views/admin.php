@@ -25,39 +25,39 @@
     </style>
 </head>
 
-<body class="bg-dark text-white">
+<body class="bg-body">
     <!-- Wrapper -->
     <div class="d-flex">
         <!-- Offcanvas Sidebar -->
-        <div id="sidebar"
-            class="offcanvas-lg offcanvas-start bg-dark text-white border-end border-secondary min-vh-100"
+        <section id="sidebar"
+            class="offcanvas-lg offcanvas-start bg-body border-end border-secondary min-vh-100"
             tabindex="-1" style="width: 280px;">
-            <div class="offcanvas-body d-flex flex-column h-100 p-3" >
-                <a href="" class="d-flex align-items-center mb-3 text-white text-decoration-none">
+            <div class="offcanvas-body d-flex flex-column h-100 p-3">
+                <a href="" class="d-flex align-items-center mb-3 text-body text-decoration-none">
                     <span class="fs-4 fw-bold"><i class="bi bi-database-fill-gear me-2"></i>CMS Admin</span>
                 </a>
                 <hr class="border-secondary">
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active bg-primary text-white" aria-current="page">
+                        <a href="#" class="nav-link active bg-body-secondary text-body" aria-current="page">
                             <i class="bi bi-speedometer2 me-2"></i>Dashboard
                         </a>
                     </li>
-                    <li><a href="#" class="nav-link text-white-50"><i class="bi bi-file-earmark-text me-2"></i>Posts</a>
+                    <li><a href="#" class="nav-link text-body"><i class="bi bi-file-earmark-text me-2"></i>Posts</a>
                     </li>
-                    <li><a href="#" class="nav-link text-white-50"><i class="bi bi-people me-2"></i>Users</a></li>
-                    <li><a href="#" class="nav-link text-white-50"><i class="bi bi-images me-2"></i>Media</a></li>
-                    <li><a href="#" class="nav-link text-white-50"><i class="bi bi-gear me-2"></i>Settings</a></li>
+                    <li><a href="#" class="nav-link text-body"><i class="bi bi-people me-2"></i>Users</a></li>
+                    <li><a href="#" class="nav-link text-body"><i class="bi bi-images me-2"></i>Media</a></li>
+                    <li><a href="#" class="nav-link text-body"><i class="bi bi-gear me-2"></i>Settings</a></li>
                 </ul>
                 <hr class="border-secondary">
                 <div class="dropdown">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                    <a href="#" class="d-flex align-items-center text-body text-decoration-none dropdown-toggle"
                         data-bs-toggle="dropdown">
                         <img src="https://via.placeholder.com/32/495057/ffffff?text=AD" alt="Admin"
                             class="rounded-circle me-2" width="32">
                         <strong>Admin</strong>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-dark shadow">
+                    <ul class="dropdown-menu shadow">
                         <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Profile</a></li>
                         <li><a class="dropdown-item" href="#"><i class="bi bi-sliders me-2"></i>Settings</a></li>
                         <li>
@@ -73,7 +73,7 @@
                     </ul>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Main Content -->
         <div class="flex-grow-1 p-4 bg-gray-900">
@@ -94,7 +94,7 @@
             <!-- Stats Cards -->
             <div class="row g-4 mb-4">
                 <div class="col-md-3">
-                    <div class="card bg-dark border-primary">
+                    <div class="card bg-body border-primary">
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
@@ -107,7 +107,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="card bg-dark border-success">
+                    <div class="card bg-body border-success">
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
@@ -120,7 +120,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="card bg-dark border-warning">
+                    <div class="card bg-body border-warning">
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
@@ -133,7 +133,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="card bg-dark border-info">
+                    <div class="card bg-body border-info">
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
@@ -151,13 +151,13 @@
             <div class="row g-4">
                 <!-- Recent Posts Table -->
                 <div class="col-lg-8">
-                    <div class="card bg-dark border-secondary shadow-sm">
-                        <div class="card-header bg-gray-800 border-secondary">
+                    <div class="card bg-body border-secondary shadow-sm">
+                        <div class="card-header bg-body-tertiary border-secondary">
                             <h5 class="mb-0"><i class="bi bi-file-earmark-text me-2"></i>Recent Posts</h5>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-dark table-hover align-middle">
+                                <table class="table bg-primary table-hover align-middle">
                                     <thead class="bg-gray-800">
                                         <tr>
                                             <th>ID</th>
@@ -201,7 +201,7 @@
 
                 <!-- Quick Actions Widget -->
                 <div class="col-lg-4">
-                    <div class="card bg-dark border-secondary shadow-sm">
+                    <div class="card bg-body border-secondary shadow-sm">
                         <div class="card-header bg-gray-800 border-secondary">
                             <h5 class="mb-0"><i class="bi bi-lightning-charge me-2"></i>Quick Actions</h5>
                         </div>
@@ -228,17 +228,17 @@
     </div>
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/Js/Bootstrap/bootstrap.bundle.min.js"></script>
     <!-- Theme Toggle Script -->
     <script>
-        document.getElementById('themeToggle').addEventListener('click', function () {
+        document.getElementById('themeToggle').addEventListener('click', function() {
             const htmlEl = document.documentElement;
             const currentTheme = htmlEl.getAttribute('data-bs-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             htmlEl.setAttribute('data-bs-theme', newTheme);
-            this.innerHTML = newTheme === 'dark'
-                ? '<i class="bi bi-sun-fill me-2"></i>Light Mode'
-                : '<i class="bi bi-moon-stars-fill me-2"></i>Dark Mode';
+            this.innerHTML = newTheme === 'dark' ?
+                '<i class="bi bi-sun-fill me-2"></i>Light Mode' :
+                '<i class="bi bi-moon-stars-fill me-2"></i>Dark Mode';
         });
     </script>
 </body>
