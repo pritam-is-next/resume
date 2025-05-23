@@ -8,6 +8,11 @@ import (
 type Admin struct{}
 
 func (h *Admin) GET(Session *Server.Session) {
+
+	if !Session.IsLoggedIn() {
+		Session.Redirect("/login")
+	}
+
 	if err := Session.RenderEngine.RenderTemplate("admin.php", Server.TemplateData{
 		"Title":          "Pritam Dutta",
 		"Heading":        "Pritam Dutta",

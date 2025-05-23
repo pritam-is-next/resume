@@ -1,16 +1,11 @@
 package main
 
 import (
-	Controllers "github.com/pritam-is-next/resume/Controllers"
-
 	server "github.com/vrianta/Server"
 )
 
 func main() {
-	server.New("", "1080", server.Routes{
-		"/": &Controllers.Home{},
-		"/admin": &Controllers.Admin{},
-	}, &server.Config{
+	server.New("", "1080", Routes, &server.Config{
 		JS_Folders: []string{
 			"Js",
 		},

@@ -1,4 +1,2 @@
-github.com/vrianta/Server v0.1.4 h1:Kx7g+2kLKFOOjnUDhFu+21S9am8dbq+cJss47zDxxps=
-github.com/vrianta/Server v0.1.4/go.mod h1:Pwj8dLw/fuK2D6kCoezCMv0bjc8eEvyQQtno9kf9/b4=
 golang.org/x/crypto v0.38.0 h1:jt+WWG8IZlBnVbomuhg2Mdq0+BBQaHbtqHEFEigjUV8=
 golang.org/x/crypto v0.38.0/go.mod h1:MvrbAqul58NNYPKnOra203SB9vpuZW0e+RRZV+Ggqjw=
