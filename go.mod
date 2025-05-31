@@ -7,6 +7,6 @@ go 1.24.3
 // 	github.com/vrianta/Server => ../Server
 // )
 
-require github.com/vrianta/Server v0.1.4
+require github.com/vrianta/Server v0.1.5
 
 require golang.org/x/crypto v0.38.0 // indirect
