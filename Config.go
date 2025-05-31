@@ -1,16 +1,11 @@
 package main
 
-import server "github.com/vrianta/Server"
+import Config "github.com/vrianta/Server/Config"
 
-var Config = &server.Config{
-	JS_Folders: []string{
-		"Js",
-	},
-	CSS_Folders: []string{
-		"Css",
-	},
-	Static_folders: []string{
-		"Static",
-	},
-	Views_folder: "Views",
-}
+var ServerConfig = Config.New(false, "Views", []string{
+	"Static",
+}, []string{
+	"Css",
+}, []string{
+	"Js",
+})

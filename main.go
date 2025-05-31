@@ -1,9 +1,7 @@
 package main
 
-import (
-	server "github.com/vrianta/Server"
-)
+import Server "github.com/vrianta/Server"
 
 func main() {
-	server.New("", "1080", Routes, Config).Start()
+	Server.New("", "1080", Routes, &ServerConfig).Start()
 }
