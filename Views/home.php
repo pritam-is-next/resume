@@ -241,8 +241,8 @@
     <footer class="footer"> </footer>
 
     <!-- Bootstrap JS -->
-    <script src="/Js/Bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="/Js/main.js"></script>
+    <script src="/Js/Bootstrap/bootstrap.bundle.min.js" defer></script>
+    <script src="/Js/main.js" defer></script>
 
     <script>
         // Bootstrap 5 form validation

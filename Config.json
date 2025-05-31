@@ -1,0 +1,13 @@
+{
+	"Http": false,
+	"Build": true,
+	"StaticFolders": [
+		"Static"
+	],
+	"CssFolders": [
+		"Css"
+	],
+	"JsFolders": [
+		"Js"
+	]
+}
