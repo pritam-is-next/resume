@@ -3,7 +3,6 @@ package login
 import (
 	components "github.com/pritam-is-next/resume/Components"
 	"github.com/vrianta/Server/Controller"
-	"github.com/vrianta/Server/Log"
 	"github.com/vrianta/Server/Redirect"
 	"github.com/vrianta/Server/Template"
 )
@@ -39,7 +38,7 @@ var Login = Controller.Struct{
 			return &Template.EmptyResponse
 		}
 
-		Log.WriteLog(self.Session.POST)
+		// Log.WriteLog(self.Session.POST)
 		email, email_ok := self.Session.POST["loginEmail"]
 		password, password_ok := self.Session.POST["loginPassword"]
 
