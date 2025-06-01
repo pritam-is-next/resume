@@ -4,9 +4,9 @@ import { sleep, check } from 'k6';
 export let options = {
   stages: [
     { duration: '30s', target: 100 },
-    { duration: '1m', target: 500 },
-    { duration: '2m', target: 1000 },
-    { duration: '2m', target: 1000 },
+    { duration: '1m', target: 200 },
+    { duration: '2m', target: 400 },
+    { duration: '2m', target: 400 },
     { duration: '30s', target: 0 },
   ],
 };
@@ -14,8 +14,8 @@ export let options = {
 export default function () {
   // let res = http.get('http://192.168.1.105:1080');
   //http://localhost:1080/
-  // let res = http.get('http://localhost:1080');
-  let res = http.get('http://pritam.dutta.vrianta.in');
+  let res = http.get('http://localhost:1080');
+  // let res = http.get('http://pritam.dutta.vrianta.in');
   
   check(res, {
     'status is 200': (r) => r.status === 200,
