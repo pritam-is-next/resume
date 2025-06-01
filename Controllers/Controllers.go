@@ -6,6 +6,8 @@ import (
 	login "github.com/pritam-is-next/resume/Controllers/Login"
 )
 
-var Home = &home.Home
-var Admin = &admin.Admin
-var Login = &login.Login
+var (
+	Home  = &home.Home
+	Admin = &admin.Admin
+	Login = &login.Login
+)
