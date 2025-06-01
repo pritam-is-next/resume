@@ -1,5 +1,5 @@
 {
-	"Http": false,
+	"Https": false,
 	"Build": true,
 	"StaticFolders": [
 		"Static"

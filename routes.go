@@ -2,11 +2,12 @@ package main
 
 import (
 	"github.com/pritam-is-next/resume/Controllers"
-	Server "github.com/vrianta/Server"
+	"github.com/vrianta/Server/Router"
 )
 
-var Routes = Server.Routes{
-	"/":      Controllers.Home,
-	"/admin": Controllers.Admin,
-	"/login": Controllers.Login,
-}
+var Routes = Router.InitRoutes(&Router.Routes{
+	"/":       Controllers.Home,
+	"/admin":  Controllers.Admin,
+	"/login":  Controllers.Login,
+	"/logout": Controllers.Logout,
+})
