@@ -12,7 +12,7 @@ var Home = Controller.Struct{
 	GET:  GET,
 }
 
-var GET = func(Session *Session.Struct) *Template.Response {
+var GET = func(self *Controller.Struct) *Template.Response {
 	response := &Template.Response{
 		"Title":          "Pritam Dutta",
 		"Heading":        "Pritam Dutta",

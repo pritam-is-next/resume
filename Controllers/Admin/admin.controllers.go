@@ -1,38 +1,34 @@
-// package Controllers
+package admin
 
-// import (
-// 	components "github.com/pritam-is-next/resume/Components"
-// 	Server "github.com/vrianta/Server"
-// 	"github.com/vrianta/Server/Controller"
-// )
+import (
+	components "github.com/pritam-is-next/resume/Components"
+	Controller "github.com/vrianta/Server/Controller"
+	"github.com/vrianta/Server/Redirect"
+	Template "github.com/vrianta/Server/Template"
+)
 
-// type Admin Controller.Struct
+var Admin = Controller.Struct{
+	View: "admin.php",
+	GET:  GET,
+}
 
-// func (h *Admin) Demo(Session *Server.Session) {
+var GET = func(self *Controller.Struct) *Template.Response {
 
-// 	if !Session.IsLoggedIn() {
-// 		Session.Redirect("/login")
-// 	}
+	if !self.Session.IsLoggedIn() {
+		Redirect.New("/login", self.Session).Redirect()
+	}
 
-// 	if err := Session.RenderEngine.RenderTemplate("admin.php", Server.TemplateData{
-// 		"Title":          "Pritam Dutta",
-// 		"Heading":        "Pritam Dutta",
-// 		"NavItems":       components.NavItems,
-// 		"Hero":           components.Hero,
-// 		"AboutMe":        components.AboutMe,
-// 		"Skills":         components.Skills,
-// 		"Experiences":    components.Experiences,
-// 		"Projects":       components.Projects,
-// 		"ContactDetails": components.ContactDetails,
-// 	}); err != nil {
-// 		Session.RenderEngine.Render(err.Error())
-// 	}
-// }
+	response := Template.Response{
+		"Title":          "Pritam Dutta",
+		"Heading":        "Pritam Dutta",
+		"NavItems":       components.NavItems,
+		"Hero":           components.Hero,
+		"AboutMe":        components.AboutMe,
+		"Skills":         components.Skills,
+		"Experiences":    components.Experiences,
+		"Projects":       components.Projects,
+		"ContactDetails": components.ContactDetails,
+	}
 
-// func (h *Admin) POST(Session *Server.Session) {
-
-// }
-
-// func (h *Admin) DELETE(Session *Server.Session) {
-
-// }
+	return &response
+}

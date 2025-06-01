@@ -14,7 +14,8 @@ export let options = {
 export default function () {
   // let res = http.get('http://192.168.1.105:1080');
   //http://localhost:1080/
-  let res = http.get('http://localhost:1080');
+  // let res = http.get('http://localhost:1080');
+  let res = http.get('http://pritam.dutta.vrianta.in');
   
   check(res, {
     'status is 200': (r) => r.status === 200,
