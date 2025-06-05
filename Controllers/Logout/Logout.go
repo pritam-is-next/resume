@@ -7,7 +7,6 @@ import (
 )
 
 var Logout = Controller.Struct{
-	View: "",
 	GET: func(self *Controller.Struct) *Template.Response {
 
 		self.Session.Logout()
