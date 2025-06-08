@@ -3,7 +3,7 @@ package login
 import (
 	components "github.com/pritam-is-next/resume/Components"
 	"github.com/vrianta/Server/Controller"
-	"github.com/vrianta/Server/Redirect"
+	"github.com/vrianta/Server/Log"
 	"github.com/vrianta/Server/Template"
 )
 
@@ -13,8 +13,8 @@ var Login = Controller.Struct{
 	View: "login.php",
 	GET: func(self *Controller.Struct) *Template.Response {
 
-		if self.Session.IsLoggedIn() {
-			Redirect.New("/admin", self.Session).Redirect()
+		if self.IsLoggedIn() {
+			self.Redirect("/admin")
 			return &Template.EmptyResponse
 		}
 
@@ -33,22 +33,25 @@ var Login = Controller.Struct{
 	},
 	POST: func(self *Controller.Struct) *Template.Response {
 
-		if self.Session.IsLoggedIn() {
-			Redirect.New("/admin", self.Session).Redirect()
+		if self.IsLoggedIn() {
+			self.Redirect("/admin")
+			Log.WriteLog("Redirecting to Admin")
 			return &Template.EmptyResponse
 		}
 
-		// Log.WriteLog(self.Session.POST)
-		email, email_ok := self.Session.POST["loginEmail"]
-		password, password_ok := self.Session.POST["loginPassword"]
+		email := self.GetInput("loginEmail")
+		password := self.GetInput("loginPassword")
 
-		if !email_ok || !password_ok {
-			Redirect.New("", self.Session).Redirect()
+		if email == nil || password == nil {
+			self.Redirect("/login")
+			Log.WriteLog("Redirecting to Login")
+			return &Template.EmptyResponse
 		}
 
-		if email == "sample@gmail.com" && password == "pass" {
-			self.Session.Login("sample@gmail.com")
-			Redirect.New("/admin", self.Session).Redirect()
+		if email.(string) == "sample@gmail.com" && password.(string) == "pass" {
+			self.Login()
+			Log.WriteLog("Redirecting to Admin")
+			self.Redirect("/admin")
 		}
 
 		return &Template.EmptyResponse

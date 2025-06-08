@@ -3,7 +3,6 @@ package admin
 import (
 	components "github.com/pritam-is-next/resume/Components"
 	Controller "github.com/vrianta/Server/Controller"
-	"github.com/vrianta/Server/Redirect"
 	Template "github.com/vrianta/Server/Template"
 )
 
@@ -14,8 +13,8 @@ var Admin = Controller.Struct{
 
 var GET = func(self *Controller.Struct) *Template.Response {
 
-	if !self.Session.IsLoggedIn() {
-		Redirect.New("/login", self.Session).Redirect()
+	if !self.GetSession().IsLoggedIn() {
+		self.Redirect("/Login")
 	}
 
 	response := Template.Response{
