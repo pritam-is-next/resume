@@ -14,7 +14,7 @@ var Admin = Controller.Struct{
 var GET = func(self *Controller.Struct) *Template.Response {
 
 	if !self.GetSession().IsLoggedIn() {
-		self.Redirect("/Login")
+		self.Redirect("/login")
 	}
 
 	response := Template.Response{

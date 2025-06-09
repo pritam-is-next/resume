@@ -3,7 +3,6 @@ package Home
 import (
 	components "github.com/pritam-is-next/resume/Components"
 	Controller "github.com/vrianta/Server/Controller"
-	"github.com/vrianta/Server/Session"
 	"github.com/vrianta/Server/Template"
 )
 
@@ -28,12 +27,4 @@ var GET = func(self *Controller.Struct) *Template.Response {
 	// 	Session.RenderEngine.Render(err.Error())
 	// }
 	return response
-}
-
-func POST(Session *Session.Struct) {
-
-}
-
-func DELETE(Session *Session.Struct) {
-
 }
