@@ -5,9 +5,11 @@ import (
 	"github.com/vrianta/Server/Router"
 )
 
-var Routes = Router.InitRoutes(&Router.Routes{
-	"/":       Controllers.Home,
-	"/admin":  Controllers.Admin,
-	"/login":  Controllers.Login,
-	"/logout": Controllers.Logout,
-})
+var rootPths = Router.New("/").RegisterRoutes(
+	Router.Route("", Controllers.Home),
+	Router.Route("admin", Controllers.Admin),
+	Router.Route("login", Controllers.Login),
+	Router.Route("logout", Controllers.Logout),
+)
+
+var apiRoutes = Router.New("/api/").RegisterRoutes()
