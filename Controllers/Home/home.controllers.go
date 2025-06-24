@@ -7,7 +7,7 @@ import (
 )
 
 var Home = Controller.Struct{
-	View: "home.php",
+	View: "home",
 	GET:  GET,
 }
 

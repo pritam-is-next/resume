@@ -7,7 +7,7 @@ import (
 )
 
 var Admin = Controller.Struct{
-	View: "admin.php",
+	View: "admin",
 	GET:  GET,
 }
 

@@ -7,7 +7,6 @@ import (
 
 var Logout = Controller.Struct{
 	GET: func(self *Controller.Struct) *Template.Response {
-
 		self.Logout()
 		self.Redirect("/")
 		return &Template.NoResponse

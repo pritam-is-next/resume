@@ -10,7 +10,7 @@ import (
 type login Controller.Struct
 
 var Login = Controller.Struct{
-	View: "login.php",
+	View: "login",
 	GET: func(self *Controller.Struct) *Template.Response {
 
 		if self.IsLoggedIn() {
