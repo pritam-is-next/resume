@@ -2,16 +2,13 @@ package logout
 
 import (
 	"github.com/vrianta/Server/Controller"
-	"github.com/vrianta/Server/Redirect"
 	"github.com/vrianta/Server/Template"
 )
 
 var Logout = Controller.Struct{
-	View: "",
 	GET: func(self *Controller.Struct) *Template.Response {
-
-		self.Session.Logout()
-		Redirect.New("/", self.Session)
+		self.Logout()
+		self.Redirect("/")
 		return &Template.NoResponse
 	},
 }

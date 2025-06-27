@@ -8,8 +8,8 @@ import (
 )
 
 var (
-	Home   = &home.Home
-	Admin  = &admin.Admin
-	Login  = &login.Login
-	Logout = &logout.Logout
+	Home   = home.Home
+	Admin  = admin.Admin
+	Login  = login.Login
+	Logout = logout.Logout
 )
