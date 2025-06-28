@@ -5,11 +5,14 @@ import (
 	"github.com/vrianta/Server/Router"
 )
 
-var rootPths = Router.New("/").RegisterRoutes(
-	Router.Route("", Controllers.Home),
-	Router.Route("admin", Controllers.Admin),
-	Router.Route("login", Controllers.Login),
-	Router.Route("logout", Controllers.Logout),
-)
+// Register Routes initializes the routes for the application.
+func init() {
+	Router.New("/").RegisterRoutes(
+		Router.Route("", Controllers.Home),
+		Router.Route("admin", Controllers.Admin),
+		Router.Route("login", Controllers.Login),
+		Router.Route("logout", Controllers.Logout),
+	)
 
-var apiRoutes = Router.New("/api/").RegisterRoutes()
+	Router.New("/api/").RegisterRoutes()
+}

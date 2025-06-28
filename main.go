@@ -7,6 +7,5 @@ import (
 )
 
 func main() {
-	// err, _sql := sql.Open(Config.GetDatabaseDriver(), Config.GetDSN())
 	Server.New().InitDatabase().Start()
 }
