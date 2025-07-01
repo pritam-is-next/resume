@@ -1,7 +1,10 @@
 package login
 
 import (
+	"fmt"
+
 	components "github.com/pritam-is-next/resume/Components"
+	model "github.com/pritam-is-next/resume/models"
 	"github.com/vrianta/Server/Controller"
 	"github.com/vrianta/Server/Log"
 	"github.com/vrianta/Server/Template"
@@ -46,6 +49,12 @@ var Login = Controller.Struct{
 			self.Redirect("/login")
 			Log.WriteLog("Redirecting to Login")
 			return &Template.EmptyResponse
+		}
+
+		if users, err := model.Users.Get().Fetch(); err != nil {
+			fmt.Println("Got error while fetching " + err.Error())
+		} else {
+			fmt.Println(users[0].GetFieldValue("userId"))
 		}
 
 		if email.(string) == "sample@gmail.com" && password.(string) == "pass" {

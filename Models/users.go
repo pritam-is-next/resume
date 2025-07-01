@@ -1,39 +1,39 @@
 package models
 
-import Models "github.com/vrianta/Server/ModelsHandler"
+import models_handler "github.com/vrianta/Server/modelsHandler"
 
-var users = Models.New(
+var Users = models_handler.New(
 	"users",
-	[]Models.Field{
-		{
+	map[string]models_handler.Field{
+		"userId": {
 			Name:     "userId",
-			Type:     Models.FieldsTypes.VarChar,
+			Type:     models_handler.FieldsTypes.VarChar,
 			Length:   20,
 			Nullable: false,
-			Index: Models.Index{
+			Index: models_handler.Index{
 				PrimaryKey: true,
 				Unique:     false,
 				Index:      true,
 			},
 		},
-		{
+		"userName": {
 			Name:     "userName",
-			Type:     Models.FieldsTypes.VarChar,
+			Type:     models_handler.FieldsTypes.VarChar,
 			Length:   30,
 			Nullable: false,
-			Index: Models.Index{
+			Index: models_handler.Index{
 				Unique: true,
 				Index:  true,
 			},
 		},
-		{
+		"password": {
 			Name:     "password",
-			Type:     Models.FieldsTypes.Text,
+			Type:     models_handler.FieldsTypes.Text,
 			Nullable: false,
 		},
-		{
+		"firstName": {
 			Name:     "firstName",
-			Type:     Models.FieldsTypes.Text,
+			Type:     models_handler.FieldsTypes.Text,
 			Nullable: false,
 		},
 	},
