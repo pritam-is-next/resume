@@ -51,13 +51,14 @@ var Login = Controller.Struct{
 			return &Template.EmptyResponse
 		}
 
-		if users, err := model.Users.Get().Fetch(); err != nil {
+		if users, err := model.Users.Get().Where("userName").Is("pritamd").And().Where("password").Is("pritamd123").Fetch(); err != nil {
 			fmt.Println("Got error while fetching " + err.Error())
-		} else {
+			return &Template.Response{
+				"email":    email,
+				"password": password,
+			}
+		} else if len(users) > 0 {
 			fmt.Println(users[0].GetFieldValue("userId"))
-		}
-
-		if email.(string) == "sample@gmail.com" && password.(string) == "pass" {
 			self.Login()
 			Log.WriteLog("Redirecting to Admin")
 			self.Redirect("/admin")
