@@ -12,7 +12,7 @@ var users = Models.New(
 			Nullable: false,
 			Index: Models.Index{
 				PrimaryKey: true,
-				Unique:     true,
+				Unique:     false,
 				Index:      true,
 			},
 		},
