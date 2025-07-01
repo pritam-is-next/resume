@@ -7,7 +7,7 @@ import (
 )
 
 var Home = Controller.Struct{
-	View: "home",
+	View: "Home",
 	GET:  GET,
 }
 

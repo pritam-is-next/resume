@@ -9,6 +9,7 @@ import (
 func init() {
 	Router.New("/").RegisterRoutes(
 		Router.Route("", Controllers.Home),
+		Router.Route("home", Controllers.Home),
 		Router.Route("admin", Controllers.Admin),
 		Router.Route("login", Controllers.Login),
 		Router.Route("logout", Controllers.Logout),

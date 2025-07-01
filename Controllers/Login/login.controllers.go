@@ -51,7 +51,7 @@ var Login = Controller.Struct{
 			return &Template.EmptyResponse
 		}
 
-		if users, err := model.Users.Get().Where("userName").Is("pritamd").And().Where("password").Is("pritamd123").Fetch(); err != nil {
+		if users, err := model.Users.Get().Where("userName").Is(email.(string)).And().Where("password").Is(password.(string)).Fetch(); err != nil {
 			fmt.Println("Got error while fetching " + err.Error())
 			return &Template.Response{
 				"email":    email,
