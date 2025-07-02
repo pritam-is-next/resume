@@ -1,10 +1,10 @@
-package Controllers
+package controllers
 
 import (
-	admin "github.com/pritam-is-next/resume/Controllers/Admin"
-	home "github.com/pritam-is-next/resume/Controllers/Home"
-	login "github.com/pritam-is-next/resume/Controllers/Login"
-	logout "github.com/pritam-is-next/resume/Controllers/Logout"
+	admin "github.com/pritam-is-next/resume/Controllers/admin"
+	home "github.com/pritam-is-next/resume/Controllers/home"
+	login "github.com/pritam-is-next/resume/Controllers/login"
+	logout "github.com/pritam-is-next/resume/Controllers/logout"
 )
 
 var (

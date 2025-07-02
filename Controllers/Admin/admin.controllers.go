@@ -2,8 +2,8 @@ package admin
 
 import (
 	components "github.com/pritam-is-next/resume/Components"
-	Controller "github.com/vrianta/Server/Controller"
-	Template "github.com/vrianta/Server/Template"
+	Controller "github.com/vrianta/Server/controller"
+	Template "github.com/vrianta/Server/template"
 )
 
 var Admin = Controller.Struct{

@@ -5,9 +5,9 @@ import (
 
 	components "github.com/pritam-is-next/resume/Components"
 	model "github.com/pritam-is-next/resume/models"
-	"github.com/vrianta/Server/Controller"
-	"github.com/vrianta/Server/Log"
-	"github.com/vrianta/Server/Template"
+	Controller "github.com/vrianta/Server/controller"
+	Log "github.com/vrianta/Server/log"
+	Template "github.com/vrianta/Server/template"
 )
 
 type login Controller.Struct
@@ -51,8 +51,12 @@ var Login = Controller.Struct{
 			return &Template.EmptyResponse
 		}
 
-		if users, err := model.Users.Get().Where("userName").Is(email.(string)).And().Where("password").Is(password.(string)).Fetch(); err != nil {
-			fmt.Println("Got error while fetching " + err.Error())
+		if users, err := model.Users.Get().
+			Where("userName").Is(email.(string)).
+			And().
+			Where("password").Is(password.(string)).
+			Fetch(); err != nil {
+			Log.WriteLog("Got error while fetching ", err.Error())
 			return &Template.Response{
 				"email":    email,
 				"password": password,

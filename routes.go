@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/pritam-is-next/resume/Controllers"
-	"github.com/vrianta/Server/Router"
+	Controllers "github.com/pritam-is-next/resume/controllers"
+	Router "github.com/vrianta/Server/router"
 )
 
 // Register Routes initializes the routes for the application.

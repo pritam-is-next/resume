@@ -1,8 +1,8 @@
 package logout
 
 import (
-	"github.com/vrianta/Server/Controller"
-	"github.com/vrianta/Server/Template"
+	Controller "github.com/vrianta/Server/controller"
+	Template "github.com/vrianta/Server/template"
 )
 
 var Logout = Controller.Struct{

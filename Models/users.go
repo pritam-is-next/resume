@@ -1,6 +1,6 @@
-package models
+package Model
 
-import models_handler "github.com/vrianta/Server/modelsHandler"
+import models_handler "github.com/vrianta/Server/models"
 
 var Users = models_handler.New(
 	"users",
