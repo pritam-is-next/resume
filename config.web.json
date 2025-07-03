@@ -2,12 +2,12 @@
 	"Https": false,
 	"Build": false,
 	"StaticFolders": [
-		"Static"
+		"static"
 	],
 	"CssFolders": [
-		"Css"
+		"css"
 	],
 	"JsFolders": [
-		"Js"
+		"js"
 	]
 }

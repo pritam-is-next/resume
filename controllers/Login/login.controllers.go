@@ -3,7 +3,7 @@ package login
 import (
 	"fmt"
 
-	components "github.com/pritam-is-next/resume/Components"
+	components "github.com/pritam-is-next/resume/components"
 	models "github.com/pritam-is-next/resume/models"
 	Controller "github.com/vrianta/Server/controller"
 	Log "github.com/vrianta/Server/log"

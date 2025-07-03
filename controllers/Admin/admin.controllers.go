@@ -1,7 +1,7 @@
 package admin
 
 import (
-	components "github.com/pritam-is-next/resume/Components"
+	components "github.com/pritam-is-next/resume/components"
 	Controller "github.com/vrianta/Server/controller"
 	Template "github.com/vrianta/Server/template"
 )

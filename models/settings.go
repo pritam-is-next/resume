@@ -13,8 +13,9 @@ var Settings = model.New(
 			Type:     model.FieldsTypes.VarChar,
 			Length:   20,
 			Index: model.Index{
-				Index:  true,
-				Unique: true,
+				PrimaryKey: true,
+				Index:      true,
+				Unique:     false,
 			},
 		},
 		"value": {

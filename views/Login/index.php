@@ -3,8 +3,8 @@
 
 <head>
     <title>AVS CMS</title>
-    <link href="/Css/Bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link href="/Css/main.css" rel="stylesheet">
+    <link href="/css/Bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
 </head>
 
 <body>

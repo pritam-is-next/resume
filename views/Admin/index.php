@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CMS Admin Panel</title>
     <!-- Bootstrap 5.3 CSS -->
-    <link rel="stylesheet" href="/Css/Bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="/Css/Bootstrap-Icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/Bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/Bootstrap-Icons/bootstrap-icons.css">
     <style>
         /* Custom scrollbar for dark mode */
         ::-webkit-scrollbar {
