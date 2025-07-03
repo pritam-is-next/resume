@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	components "github.com/pritam-is-next/resume/Components"
-	model "github.com/pritam-is-next/resume/models"
+	models "github.com/pritam-is-next/resume/models"
 	Controller "github.com/vrianta/Server/controller"
 	Log "github.com/vrianta/Server/log"
 	Template "github.com/vrianta/Server/template"
@@ -51,7 +51,7 @@ var Login = Controller.Struct{
 			return &Template.EmptyResponse
 		}
 
-		if users, err := model.Users.Get().
+		if users, err := models.Users.Get().
 			Where("userName").Is(email.(string)).
 			And().
 			Where("password").Is(password.(string)).
