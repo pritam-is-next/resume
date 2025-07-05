@@ -1,0 +1,38 @@
+{
+  "About Me": {
+    "Disabled": 0,
+    "Dropdown": null,
+    "Href": "#about-me",
+    "Name": "About Me"
+  },
+  "Contact": {
+    "Disabled": 0,
+    "Dropdown": null,
+    "Href": "#contact-me",
+    "Name": "Contact"
+  },
+  "Experience": {
+    "Disabled": 0,
+    "Dropdown": null,
+    "Href": "#experience",
+    "Name": "Experience"
+  },
+  "Home": {
+    "Disabled": 0,
+    "Dropdown": null,
+    "Href": "#home",
+    "Name": "Home"
+  },
+  "Projects": {
+    "Disabled": 0,
+    "Dropdown": null,
+    "Href": "#projects",
+    "Name": "Projects"
+  },
+  "Skills": {
+    "Disabled": 0,
+    "Dropdown": null,
+    "Href": "#skills",
+    "Name": "Skills"
+  }
+}

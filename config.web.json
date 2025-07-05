@@ -1,6 +1,6 @@
 {
 	"Https": false,
-	"Build": false,
+	"Build": true,
 	"StaticFolders": [
 		"static"
 	],

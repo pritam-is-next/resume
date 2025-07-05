@@ -1,12 +1,4 @@
 {
-  "autosave": {
-    "element": "autosave",
-    "value": "true"
-  },
-  "debugMode": {
-    "element": "debugMode",
-    "value": "false"
-  },
   "fontSize": {
     "element": "fontSize",
     "value": "14"
