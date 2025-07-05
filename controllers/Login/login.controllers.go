@@ -5,9 +5,9 @@ import (
 
 	components "github.com/pritam-is-next/resume/components"
 	models "github.com/pritam-is-next/resume/models"
-	Controller "github.com/vrianta/Server/controller"
-	Log "github.com/vrianta/Server/log"
-	Template "github.com/vrianta/Server/template"
+	Controller "github.com/vrianta/Server/v1/controller"
+	Log "github.com/vrianta/Server/v1/log"
+	Template "github.com/vrianta/Server/v1/template"
 )
 
 type login Controller.Struct

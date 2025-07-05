@@ -1,17 +1,16 @@
 package models
 
 import (
-	"github.com/vrianta/Server/model"
+	"github.com/vrianta/Server/v1/model"
 )
 
-var Settings = model.NewV2("settings", struct {
+var Settings = model.New("settings", struct {
 	Element model.Field
 	Value   model.Field
 }{
 	Element: model.Field{
-		Name:     "element",
 		Nullable: false,
-		Type:     model.FieldsTypes.VarChar,
+		Type:     model.FieldTypes.VarChar,
 		Length:   20,
 		Index: model.Index{
 			PrimaryKey: true,
@@ -20,9 +19,8 @@ var Settings = model.NewV2("settings", struct {
 		},
 	},
 	Value: model.Field{
-		Name:     "value",
 		Nullable: false,
-		Type:     model.FieldsTypes.VarChar,
+		Type:     model.FieldTypes.VarChar,
 		Length:   20,
 	},
 })

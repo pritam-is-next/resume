@@ -56,7 +56,7 @@
 
     </header>
     <main>
-        <section id="home" class="hero-section text-white d-flex align-items-center" style="background-image: url(/Static/img/hero-background.avif);">
+        <section id="home" class="hero-section text-white d-flex align-items-center" style="background-image: url(/static/img/hero-background.avif);">
             <div class="overlay"></div>
             <div class="container text-center position-relative z-1">
                 <h1 class="display-4 fw-bold"><?= $$Hero->Heading ?></h1>

@@ -3,7 +3,7 @@ package main
 import (
 	_ "github.com/go-sql-driver/mysql"
 	_ "github.com/pritam-is-next/resume/models"
-	server "github.com/vrianta/Server"
+	"github.com/vrianta/Server/v1/server"
 )
 
 func main() {

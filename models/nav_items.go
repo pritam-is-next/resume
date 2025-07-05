@@ -1,7 +1,7 @@
 package models
 
 import (
-	"github.com/vrianta/Server/model"
+	"github.com/vrianta/Server/v1/model"
 )
 
 // var Nav_items = model.New(
@@ -10,7 +10,7 @@ import (
 // 		"Name": {
 // 			Name:     "Name",
 // 			Nullable: false,
-// 			Type:     model.FieldsTypes.VarChar,
+// 			Type:     model.FieldTypes.VarChar,
 // 			Length:   10,
 // 			Index: model.Index{
 // 				PrimaryKey: true,
@@ -19,53 +19,49 @@ import (
 // 		"Href": {
 // 			Name:     "Href",
 // 			Nullable: false,
-// 			Type:     model.FieldsTypes.Text,
+// 			Type:     model.FieldTypes.Text,
 // 		},
 // 		"Disabled": {
 // 			Name:         "Disabled",
 // 			Nullable:     false,
 // 			DefaultValue: "0",
-// 			Type:         model.FieldsTypes.Bool,
+// 			Type:         model.FieldTypes.Bool,
 // 		},
 // 		"Dropdown": {
 // 			Name:         "Dropdown",
 // 			Nullable:     true,
 // 			DefaultValue: "",
-// 			Type:         model.FieldsTypes.JSON,
+// 			Type:         model.FieldTypes.JSON,
 // 		},
 // 	},
 // )
 
-var Nav_items = model.NewV2("navigation_items", struct {
+var Nav_items = model.New("navigation_items", struct {
 	Name     model.Field
-	Herf     model.Field
+	Href     model.Field
 	Disabled model.Field
 	Dropdown model.Field
 }{
 	Name: model.Field{
-		Name:     "Name",
 		Nullable: false,
-		Type:     model.FieldsTypes.VarChar,
+		Type:     model.FieldTypes.VarChar,
 		Length:   10,
 		Index: model.Index{
 			PrimaryKey: true,
 		},
 	},
-	Herf: model.Field{
-		Name:     "Href",
+	Href: model.Field{
 		Nullable: false,
-		Type:     model.FieldsTypes.Text,
+		Type:     model.FieldTypes.Text,
 	},
 	Disabled: model.Field{
-		Name:         "Disabled",
 		Nullable:     false,
 		DefaultValue: "0",
-		Type:         model.FieldsTypes.Bool,
+		Type:         model.FieldTypes.Bool,
 	},
 	Dropdown: model.Field{
-		Name:         "Dropdown",
 		Nullable:     true,
 		DefaultValue: "",
-		Type:         model.FieldsTypes.JSON,
+		Type:         model.FieldTypes.JSON,
 	},
 })

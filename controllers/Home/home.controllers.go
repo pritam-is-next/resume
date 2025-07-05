@@ -2,8 +2,8 @@ package home
 
 import (
 	components "github.com/pritam-is-next/resume/components"
-	Controller "github.com/vrianta/Server/controller"
-	Template "github.com/vrianta/Server/template"
+	Controller "github.com/vrianta/Server/v1/controller"
+	Template "github.com/vrianta/Server/v1/template"
 )
 
 var Home = Controller.Struct{

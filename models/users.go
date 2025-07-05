@@ -1,16 +1,15 @@
 package models
 
-import "github.com/vrianta/Server/model"
+import "github.com/vrianta/Server/v1/model"
 
-var Users = model.NewV2("users", struct {
+var Users = model.New("users", struct {
 	UserId    model.Field
 	UserName  model.Field
 	Password  model.Field
 	FirstName model.Field
 }{
 	UserId: model.Field{
-		Name:     "userId",
-		Type:     model.FieldsTypes.VarChar,
+		Type:     model.FieldTypes.VarChar,
 		Length:   20,
 		Nullable: false,
 		Index: model.Index{
@@ -20,8 +19,7 @@ var Users = model.NewV2("users", struct {
 		},
 	},
 	UserName: model.Field{
-		Name:     "userName",
-		Type:     model.FieldsTypes.VarChar,
+		Type:     model.FieldTypes.VarChar,
 		Length:   30,
 		Nullable: false,
 		Index: model.Index{
@@ -30,13 +28,11 @@ var Users = model.NewV2("users", struct {
 		},
 	},
 	Password: model.Field{
-		Name:     "password",
-		Type:     model.FieldsTypes.Text,
+		Type:     model.FieldTypes.Text,
 		Nullable: false,
 	},
 	FirstName: model.Field{
-		Name:     "firstName",
-		Type:     model.FieldsTypes.Text,
+		Type:     model.FieldTypes.Text,
 		Nullable: false,
 	},
 })
