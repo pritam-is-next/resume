@@ -1,8 +1,6 @@
 package login
 
 import (
-	"fmt"
-
 	components "github.com/pritam-is-next/resume/components"
 	models "github.com/pritam-is-next/resume/models"
 	Controller "github.com/vrianta/Server/v1/controller"
@@ -62,7 +60,7 @@ var Login = Controller.Struct{
 				"password": password,
 			}
 		} else if user != nil {
-			fmt.Println(user["userId"])
+			// fmt.Println(user["userId"])
 			self.Login()
 			Log.WriteLog("Redirecting to Admin")
 			self.Redirect("/admin")
