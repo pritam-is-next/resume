@@ -4,10 +4,10 @@ go 1.24.3
 
 replace (
 	github.com/pritam-is-next/resume/Controllers => ./Controllers
-	github.com/vrianta/Server => ../Server
+	github.com/vrianta/agai => ../agai
 )
 
-require github.com/vrianta/Server v0.2.1
+require github.com/vrianta/agai v0.2.1
 
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect

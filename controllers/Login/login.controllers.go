@@ -3,9 +3,9 @@ package login
 import (
 	components "github.com/pritam-is-next/resume/components"
 	models "github.com/pritam-is-next/resume/models"
-	Controller "github.com/vrianta/Server/v1/controller"
-	Log "github.com/vrianta/Server/v1/log"
-	Template "github.com/vrianta/Server/v1/template"
+	Controller "github.com/vrianta/agai/v1/controller"
+	Log "github.com/vrianta/agai/v1/log"
+	Template "github.com/vrianta/agai/v1/template"
 )
 
 type login Controller.Struct

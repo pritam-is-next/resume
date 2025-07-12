@@ -14,7 +14,7 @@ var Projects = []struct {
 	{
 		Title:            "Go HTTP Server Handler",
 		SmallDescription: "Production-grade server with encrypted sessions, fast data processing, and custom storage. Demonstrates Go's concurrency power.",
-		Link:             "https://github.com/vrianta/Server/v1/tree/golang-dev-2.0",
+		Link:             "https://github.com/vrianta/agai/v1/tree/golang-dev-2.0",
 		Image:            "/static/img/go-http.avif",
 		TechStack:        []string{"Go", "Gin", "Redis"},
 		Category:         "Backend",

@@ -1,7 +1,7 @@
 package models
 
 import (
-	"github.com/vrianta/Server/v1/model"
+	"github.com/vrianta/agai/v1/model"
 )
 
 var Settings = model.New("settings", struct {

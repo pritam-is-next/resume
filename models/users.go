@@ -1,6 +1,6 @@
 package models
 
-import "github.com/vrianta/Server/v1/model"
+import "github.com/vrianta/agai/v1/model"
 
 var Users = model.New("users", struct {
 	UserId    model.Field
