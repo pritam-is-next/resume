@@ -8,11 +8,11 @@ import (
 	Template "github.com/vrianta/agai/v1/template"
 )
 
-type login Controller.Struct
+type login Controller.Context
 
-var Login = Controller.Struct{
+var Login = Controller.Context{
 	View: "login",
-	GET: func(self *Controller.Struct) *Template.Response {
+	GET: func(self *Controller.Context) *Template.Response {
 
 		if self.IsLoggedIn() {
 			self.Redirect("/admin")
@@ -32,7 +32,7 @@ var Login = Controller.Struct{
 		}
 		return &response
 	},
-	POST: func(self *Controller.Struct) *Template.Response {
+	POST: func(self *Controller.Context) *Template.Response {
 
 		if self.IsLoggedIn() {
 			self.Redirect("/admin")

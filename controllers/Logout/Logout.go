@@ -5,8 +5,8 @@ import (
 	Template "github.com/vrianta/agai/v1/template"
 )
 
-var Logout = Controller.Struct{
-	GET: func(self *Controller.Struct) *Template.Response {
+var Logout = Controller.Context{
+	GET: func(self *Controller.Context) *Template.Response {
 		self.Logout()
 		self.Redirect("/")
 		return &Template.NoResponse

@@ -7,12 +7,12 @@ import (
 	Template "github.com/vrianta/agai/v1/template"
 )
 
-var Admin = Controller.Struct{
+var Admin = Controller.Context{
 	View: "admin",
 	GET:  GET,
 }
 
-var GET = func(self *Controller.Struct) *Template.Response {
+var GET = func(self *Controller.Context) *Template.Response {
 
 	if !self.GetSession().IsLoggedIn() {
 		self.Redirect("/login")

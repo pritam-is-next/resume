@@ -7,12 +7,12 @@ import (
 	Template "github.com/vrianta/agai/v1/template"
 )
 
-var Home = Controller.Struct{
+var Home = Controller.Context{
 	View: "Home",
 	GET:  GET,
 }
 
-var GET = func(self *Controller.Struct) *Template.Response {
+var GET = func(self *Controller.Context) *Template.Response {
 	nav_items := models.Nav_items.GetComponents()
 	response := &Template.Response{
 		"Title":          "Pritam Dutta",
