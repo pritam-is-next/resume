@@ -2,6 +2,7 @@ package admin
 
 import (
 	components "github.com/pritam-is-next/resume/components"
+	"github.com/pritam-is-next/resume/models"
 	Controller "github.com/vrianta/agai/v1/controller"
 	Template "github.com/vrianta/agai/v1/template"
 )
@@ -20,7 +21,7 @@ var GET = func(self *Controller.Struct) *Template.Response {
 	response := Template.Response{
 		"Title":          "Pritam Dutta",
 		"Heading":        "Pritam Dutta",
-		"NavItems":       components.NavItems,
+		"NavItems":       models.Nav_items.GetComponents(),
 		"Hero":           components.Hero,
 		"AboutMe":        components.AboutMe,
 		"Skills":         components.Skills,

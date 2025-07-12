@@ -22,7 +22,7 @@ var Login = Controller.Struct{
 		response := Template.Response{
 			"Title":          "Pritam Dutta",
 			"Heading":        "Pritam Dutta",
-			"NavItems":       components.NavItems,
+			"NavItems":       models.Nav_items.GetComponents(),
 			"Hero":           components.Hero,
 			"AboutMe":        components.AboutMe,
 			"Skills":         components.Skills,
