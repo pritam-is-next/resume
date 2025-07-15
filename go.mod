@@ -2,11 +2,6 @@ module github.com/pritam-is-next/resume
 
 go 1.24.3
 
-// replace (
-// 	github.com/pritam-is-next/resume/Controllers => ./Controllers
-// 	github.com/vrianta/agai => ../agai
-// )
-
 require github.com/vrianta/agai v0.2.1
 
 require (
