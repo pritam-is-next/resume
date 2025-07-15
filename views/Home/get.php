@@ -8,9 +8,9 @@
         <?= $$Title ?> | Portfolio
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/Css/Bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="/Css/Bootstrap-Icons/bootstrap-icons.css">
-    <link rel="stylesheet" href="/Css/main.css">
+    <link rel="stylesheet" href="/css/Bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/Bootstrap-Icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 
 <body data-bs-theme="dark" data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="50">
@@ -56,7 +56,7 @@
 
     </header>
     <main>
-        <section id="home" class="hero-section text-white d-flex align-items-center" style="background-image: url(/Static/img/hero-background.avif);">
+        <section id="home" class="hero-section text-white d-flex align-items-center" style="background-image: url(/static/img/hero-background.avif);">
             <div class="overlay"></div>
             <div class="container text-center position-relative z-1">
                 <h1 class="display-4 fw-bold"><?= $$Hero->Heading ?></h1>

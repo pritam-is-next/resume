@@ -1,7 +1,12 @@
 package main
 
-import Server "github.com/vrianta/Server"
+import (
+	_ "github.com/go-sql-driver/mysql"
+	_ "github.com/pritam-is-next/resume/models"
+	"github.com/vrianta/agai/v1/server"
+)
 
 func main() {
-	Server.New().Start()
+
+	server.Start()
 }

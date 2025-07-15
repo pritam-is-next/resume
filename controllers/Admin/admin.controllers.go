@@ -1,17 +1,18 @@
 package admin
 
 import (
-	components "github.com/pritam-is-next/resume/Components"
-	Controller "github.com/vrianta/Server/Controller"
-	Template "github.com/vrianta/Server/Template"
+	components "github.com/pritam-is-next/resume/components"
+	"github.com/pritam-is-next/resume/models"
+	Controller "github.com/vrianta/agai/v1/controller"
+	Template "github.com/vrianta/agai/v1/template"
 )
 
-var Admin = Controller.Struct{
+var Admin = Controller.Context{
 	View: "admin",
 	GET:  GET,
 }
 
-var GET = func(self *Controller.Struct) *Template.Response {
+var GET = func(self *Controller.Context) *Template.Response {
 
 	if !self.GetSession().IsLoggedIn() {
 		self.Redirect("/login")
@@ -20,7 +21,7 @@ var GET = func(self *Controller.Struct) *Template.Response {
 	response := Template.Response{
 		"Title":          "Pritam Dutta",
 		"Heading":        "Pritam Dutta",
-		"NavItems":       components.NavItems,
+		"NavItems":       models.Nav_items.GetComponents(),
 		"Hero":           components.Hero,
 		"AboutMe":        components.AboutMe,
 		"Skills":         components.Skills,

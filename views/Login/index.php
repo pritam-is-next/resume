@@ -3,8 +3,8 @@
 
 <head>
     <title>AVS CMS</title>
-    <link href="/Css/Bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link href="/Css/main.css" rel="stylesheet">
+    <link href="/css/Bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
 </head>
 
 <body>
@@ -31,8 +31,8 @@
                                 <form method="post">
                                     <!-- Email input -->
                                     <div class="form-floating mb-3">
-                                        <input type="email" class="form-control" id="loginEmail"
-                                            placeholder="name@example.com" name="loginEmail">
+                                        <input type="text" class="form-control" id="loginEmail"
+                                            placeholder="name" name="loginEmail">
                                         <label for="loginEmail">User Name</label>
                                     </div>
 

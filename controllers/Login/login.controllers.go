@@ -1,17 +1,18 @@
 package login
 
 import (
-	components "github.com/pritam-is-next/resume/Components"
-	"github.com/vrianta/Server/Controller"
-	"github.com/vrianta/Server/Log"
-	"github.com/vrianta/Server/Template"
+	components "github.com/pritam-is-next/resume/components"
+	models "github.com/pritam-is-next/resume/models"
+	Controller "github.com/vrianta/agai/v1/controller"
+	Log "github.com/vrianta/agai/v1/log"
+	Template "github.com/vrianta/agai/v1/template"
 )
 
-type login Controller.Struct
+type login Controller.Context
 
-var Login = Controller.Struct{
+var Login = Controller.Context{
 	View: "login",
-	GET: func(self *Controller.Struct) *Template.Response {
+	GET: func(self *Controller.Context) *Template.Response {
 
 		if self.IsLoggedIn() {
 			self.Redirect("/admin")
@@ -21,7 +22,7 @@ var Login = Controller.Struct{
 		response := Template.Response{
 			"Title":          "Pritam Dutta",
 			"Heading":        "Pritam Dutta",
-			"NavItems":       components.NavItems,
+			"NavItems":       models.Nav_items.GetComponents(),
 			"Hero":           components.Hero,
 			"AboutMe":        components.AboutMe,
 			"Skills":         components.Skills,
@@ -31,7 +32,7 @@ var Login = Controller.Struct{
 		}
 		return &response
 	},
-	POST: func(self *Controller.Struct) *Template.Response {
+	POST: func(self *Controller.Context) *Template.Response {
 
 		if self.IsLoggedIn() {
 			self.Redirect("/admin")
@@ -48,7 +49,18 @@ var Login = Controller.Struct{
 			return &Template.EmptyResponse
 		}
 
-		if email.(string) == "sample@gmail.com" && password.(string) == "pass" {
+		if user, err := models.Users.Get().
+			Where("userName").Is(email.(string)).
+			And().
+			Where("password").Is(password.(string)).
+			First(); err != nil {
+			Log.WriteLog("Got error while fetching ", err.Error())
+			return &Template.Response{
+				"email":    email,
+				"password": password,
+			}
+		} else if user != nil {
+			// fmt.Println(user["userId"])
 			self.Login()
 			Log.WriteLog("Redirecting to Admin")
 			self.Redirect("/admin")

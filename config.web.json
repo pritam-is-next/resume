@@ -2,12 +2,13 @@
 	"Https": false,
 	"Build": true,
 	"StaticFolders": [
-		"Static"
+		"static"
 	],
 	"CssFolders": [
-		"Css"
+		"css"
 	],
 	"JsFolders": [
-		"Js"
-	]
+		"js"
+	],
+	"SessionStoreType": "disk"
 }

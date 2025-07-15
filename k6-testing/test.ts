@@ -8,6 +8,10 @@ export let options = {
     { duration: '30s', target: 10000 },
     { duration: '30s', target: 0 },
   ],
+  thresholds: {
+    'http_req_duration{expected_response:true}': ['p(95)<500'], // fail if 95% responses > 500ms
+    'http_req_failed': ['rate<0.01'], // allow <1% failure
+  }
 
 };
 
