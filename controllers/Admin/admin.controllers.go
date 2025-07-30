@@ -14,7 +14,7 @@ var Admin = Controller.Context{
 
 var GET = func(self *Controller.Context) *Template.Response {
 
-	if !self.GetSession().IsLoggedIn() {
+	if !self.IsLoggedIn() {
 		self.Redirect("/login")
 	}
 

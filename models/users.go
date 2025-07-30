@@ -3,12 +3,12 @@ package models
 import "github.com/vrianta/agai/v1/model"
 
 var Users = model.New("users", struct {
-	UserId    model.Field
-	UserName  model.Field
-	Password  model.Field
-	FirstName model.Field
+	UserId    *model.Field
+	UserName  *model.Field
+	Password  *model.Field
+	FirstName *model.Field
 }{
-	UserId: model.Field{
+	UserId: &model.Field{
 		Type:     model.FieldTypes.VarChar,
 		Length:   20,
 		Nullable: false,
@@ -18,7 +18,7 @@ var Users = model.New("users", struct {
 			Index:      true,
 		},
 	},
-	UserName: model.Field{
+	UserName: &model.Field{
 		Type:     model.FieldTypes.VarChar,
 		Length:   30,
 		Nullable: false,
@@ -27,11 +27,11 @@ var Users = model.New("users", struct {
 			Index:  true,
 		},
 	},
-	Password: model.Field{
+	Password: &model.Field{
 		Type:     model.FieldTypes.Text,
 		Nullable: false,
 	},
-	FirstName: model.Field{
+	FirstName: &model.Field{
 		Type:     model.FieldTypes.Text,
 		Nullable: false,
 	},

@@ -10,5 +10,5 @@
 	"JsFolders": [
 		"js"
 	],
-	"SessionStoreType": "disk"
+	"SessionStoreType": "db"
 }

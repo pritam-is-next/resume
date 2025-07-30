@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +16,7 @@
     <header class="sticky-top">
         <nav class="navbar navbar-expand-lg navbar-light bg-body">
             <div class="container">
-                <a class="navbar-brand" href="#"><?= $$Heading ?></a>
+                <a class="navbar-brand" href="#">edit  <?= $$Heading ?></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -101,28 +100,28 @@
                         <div class="col-md-6 mb-4">
                             <h5><?= $skill->Name ?></h5>
                             <div class="progress bg-body" style="height: 20px;">
-                            <?php if ($skill->Level >= 90): ?>
-                                <div class="progress-bar bg-success" role="progressbar" style="width: <?= $skill->Level ?>%;"
-                                    aria-valuenow="<?= $skill->Level ?>" aria-valuemin="0" aria-valuemax="100">
-                                <?php elseif ($skill->Level >= 85): ?>
-                                    <div class="progress-bar bg-warning" role="progressbar"
-                                        style="width: <?= $skill->Level ?>%;" aria-valuenow="<?= $skill->Level ?>"
-                                        aria-valuemin="0" aria-valuemax="100">
-                                <?php elseif ($skill->Level >= 80): ?>
-                                    <div class="progress-bar bg-primary" role="progressbar"
-                                        style="width: <?= $skill->Level ?>%;" aria-valuenow="<?= $skill->Level ?>"
-                                        aria-valuemin="0" aria-valuemax="100">
-                                <?php elseif ($skill->Level >= 75): ?>
-                                    <div class="progress-bar bg-danger" role="progressbar" style="width: <?= $skill->Level ?>%;"
+                                <?php if ($skill->Level >= 90): ?>
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: <?= $skill->Level ?>%;"
                                         aria-valuenow="<?= $skill->Level ?>" aria-valuemin="0" aria-valuemax="100">
-                                <?php endif ?>
+                                    <?php elseif ($skill->Level >= 85): ?>
+                                        <div class="progress-bar bg-warning" role="progressbar"
+                                            style="width: <?= $skill->Level ?>%;" aria-valuenow="<?= $skill->Level ?>"
+                                            aria-valuemin="0" aria-valuemax="100">
+                                        <?php elseif ($skill->Level >= 80): ?>
+                                            <div class="progress-bar bg-primary" role="progressbar"
+                                                style="width: <?= $skill->Level ?>%;" aria-valuenow="<?= $skill->Level ?>"
+                                                aria-valuemin="0" aria-valuemax="100">
+                                            <?php elseif ($skill->Level >= 75): ?>
+                                                <div class="progress-bar bg-danger" role="progressbar" style="width: <?= $skill->Level ?>%;"
+                                                    aria-valuenow="<?= $skill->Level ?>" aria-valuemin="0" aria-valuemax="100">
+                                                <?php endif ?>
 
-                                <?= $skill->Level ?>%</div>
-                        </div>
-                    </div>
-                <?php endforeach ?>
-            </div>
-            </div>
+                                                <?= $skill->Level ?>%</div>
+                                            </div>
+                                        </div>
+                                    <?php endforeach ?>
+                                    </div>
+                            </div>
         </section>
 
         <section id="experience" class="experience-section py-5 bg-body text-light">
@@ -131,12 +130,12 @@
 
                 <div class="timeline">
                     <?php foreach ($$Experiences as $key => $Experience): ?>
-                         <div class="timeline-item mb-5 position-relative ps-4 border-start border-4 border-primary">
-                        <span class="position-absolute top-0 start-0 translate-middle bg-primary rounded-circle"
-                            style="width: 20px; height: 20px; border: 3px solid #212529;"></span>
-                        <h5 class="mb-1"><?= $Experience->Designation ?></h5>
-                        <small class="text-muted text-info"><?= $Experience->Duration ?></small>
-                        <p class="mt-2 text-light"><?= $Experience->Description ?></p>
+                        <div class="timeline-item mb-5 position-relative ps-4 border-start border-4 border-primary">
+                            <span class="position-absolute top-0 start-0 translate-middle bg-primary rounded-circle"
+                                style="width: 20px; height: 20px; border: 3px solid #212529;"></span>
+                            <h5 class="mb-1"><?= $Experience->Designation ?></h5>
+                            <small class="text-muted text-info"><?= $Experience->Duration ?></small>
+                            <p class="mt-2 text-light"><?= $Experience->Description ?></p>
                         </div>
                     <?php endforeach; ?>
                 </div>
@@ -149,8 +148,8 @@
                 <div class="row g-4">
                     <?php foreach ($$Projects as $key => $Project): ?>
                         <article class="col-md-6 col-lg-4">
-                        <div class="card project-card h-100 shadow-sm">
-                            <div class="img-wrapper" style="background-image: url('<?= $Project->Image ?>')"></div>
+                            <div class="card project-card h-100 shadow-sm">
+                                <div class="img-wrapper" style="background-image: url('<?= $Project->Image ?>')"></div>
                                 <div class="card-body d-flex flex-column">
                                     <h3 class="card-title h5"><?= $Project->Title ?></h3>
                                     <p class="card-text flex-grow-1">
@@ -236,23 +235,23 @@
                 </div>
             </div>
         </section>
-        
+
     </main>
     <!-- Footer -->
     <footer class="footer"> </footer>
 
     <!-- Bootstrap JS -->
-    <script src="/Js/Bootstrap/bootstrap.bundle.min.js" defer></script>
-    <script src="/Js/main.js" defer></script>
+    <script src="/js/Bootstrap/bootstrap.bundle.min.js" defer></script>
+    <script src="/js/main.js" defer></script>
 
     <script>
         // Bootstrap 5 form validation
-        (function () {
+        (function() {
             'use strict'
 
             const form = document.getElementById('contactForm')
 
-            form.addEventListener('submit', function (event) {
+            form.addEventListener('submit', function(event) {
                 if (!form.checkValidity()) {
                     event.preventDefault()
                     event.stopPropagation()
@@ -269,3 +268,18 @@
 </body>
 
 </html>
+
+<script>
+    const source = new EventSource("/hot-reload");
+
+    source.onmessage = function(event) {
+        if (event.data === "reload") {
+            console.log("[LiveReload] Reloading page...");
+            location.reload();
+        }
+    };
+
+    source.onerror = function(err) {
+        console.warn("[LiveReload] Disconnected from server", err);
+    };
+</script>

@@ -60,9 +60,8 @@ var Login = Controller.Context{
 				"password": password,
 			}
 		} else if user != nil {
-			// fmt.Println(user["userId"])
 			self.Login()
-			Log.WriteLog("Redirecting to Admin")
+			// Log.WriteLog("Redirecting to Admin")
 			self.Redirect("/admin")
 		}
 

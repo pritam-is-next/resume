@@ -5,10 +5,10 @@ import (
 )
 
 var Settings = model.New("settings", struct {
-	Element model.Field
-	Value   model.Field
+	Element *model.Field
+	Value   *model.Field
 }{
-	Element: model.Field{
+	Element: &model.Field{
 		Nullable: false,
 		Type:     model.FieldTypes.VarChar,
 		Length:   20,
@@ -18,7 +18,7 @@ var Settings = model.New("settings", struct {
 			Unique:     false,
 		},
 	},
-	Value: model.Field{
+	Value: &model.Field{
 		Nullable: false,
 		Type:     model.FieldTypes.VarChar,
 		Length:   20,
