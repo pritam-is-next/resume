@@ -1,9 +1,9 @@
 {
   "Host": "localhost",
   "Port": "3306",
-  "User": "testuser",
-  "Password": "testuser123",
-  "Database": "testuser",
+  "User": "resume",
+  "Password": "resume123",
+  "Database": "resume",
   "Driver": "mysql",
   "SSLMode": "disable"
 }
