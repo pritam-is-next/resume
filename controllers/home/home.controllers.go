@@ -8,7 +8,7 @@ import (
 )
 
 var Home = Controller.Context{
-	View: "Home",
+	View: "home",
 	GET:  GET,
 }
 

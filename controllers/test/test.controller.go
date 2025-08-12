@@ -6,7 +6,7 @@ import (
 )
 
 var Controller = controller.Context{
-	View: "Test",
+	View: "test",
 	GET: func(self *controller.Context) *template.Response {
 		return &template.Response{
 			"controller_name": "Test",
