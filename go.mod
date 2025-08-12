@@ -2,9 +2,7 @@ module github.com/pritam-is-next/resume
 
 go 1.24.3
 
-replace (
-	github.com/vrianta/agai => ../agai
-)
+replace github.com/vrianta/agai => ../agai
 
 require github.com/vrianta/agai v0.2.1
 

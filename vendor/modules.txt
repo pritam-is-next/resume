@@ -1,0 +1,27 @@
+# filippo.io/edwards25519 v1.1.0
+## explicit; go 1.20
+filippo.io/edwards25519
+filippo.io/edwards25519/field
+# github.com/go-sql-driver/mysql v1.9.3
+## explicit; go 1.21.0
+github.com/go-sql-driver/mysql
+# github.com/vrianta/agai v0.2.1 => ../agai
+## explicit; go 1.24.3
+github.com/vrianta/agai/v1
+github.com/vrianta/agai/v1/config
+github.com/vrianta/agai/v1/controller
+github.com/vrianta/agai/v1/cookies
+github.com/vrianta/agai/v1/database
+github.com/vrianta/agai/v1/internal/session
+github.com/vrianta/agai/v1/log
+github.com/vrianta/agai/v1/model
+github.com/vrianta/agai/v1/response
+github.com/vrianta/agai/v1/router
+github.com/vrianta/agai/v1/server
+github.com/vrianta/agai/v1/template
+github.com/vrianta/agai/v1/utils
+# golang.org/x/crypto v0.40.0
+## explicit; go 1.23.0
+golang.org/x/crypto/bcrypt
+golang.org/x/crypto/blowfish
+# github.com/vrianta/agai => ../agai
