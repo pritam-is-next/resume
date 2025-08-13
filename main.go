@@ -6,6 +6,5 @@ import (
 )
 
 func main() {
-
 	agai.New() // creating new application
 }

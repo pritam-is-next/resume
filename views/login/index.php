@@ -61,7 +61,7 @@
                                         <a href="#">Forgot password?</a>
                                     </div>
                                     <!-- Register User -->
-                                     <div class="text-center">
+                                    <div class="text-center">
                                         <a href="/register">Register User</a>
                                     </div>
                                 </form>

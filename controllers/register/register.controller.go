@@ -3,7 +3,10 @@ package register
 import (
 	"github.com/pritam-is-next/resume/models"
 	"github.com/vrianta/agai/v1/controller"
+	"github.com/vrianta/agai/v1/log"
+	"github.com/vrianta/agai/v1/response"
 	"github.com/vrianta/agai/v1/template"
+	"github.com/vrianta/agai/v1/utils"
 )
 
 /*
@@ -24,24 +27,86 @@ This setup keeps things simple — define what you need, skip what you don't.
 
 var Controller = controller.Context{
 	View: "register",
-	GET:  GET,
+	GET:  get,
+	POST: post,
 }
 
-var GET = func(self *controller.Context) *template.Response {
+var get = func(self *controller.Context) *template.Response {
 
-	if user, err := models.Users.Get().First(); err == nil {
-		// that means it is a initial application loading so we have to enable the resigtration page
-		// else we can move directly to the home page or loading page
+	component, ok := models.App_state.GetComponent("initialised")
 
-		if user.IsValid() {
-			self.Redirect("/")
+	if !ok {
+		panic("Needed Component Missing")
+	}
+
+	val, ok := component.FieldValue("Value")
+	if !ok {
+		panic("Needed Component Missing")
+	}
+
+	initialised, ok := val.(string)
+
+	if !ok {
+		panic("Needed Component Missing")
+	}
+
+	log.Info("%s", initialised)
+	if initialised == "true" {
+		self.Redirect("/")
+	}
+
+	return &template.EmptyResponse
+}
+
+var post = func(self *controller.Context) *template.Response {
+	initialised, i_ok := models.App_state.GetComponent("initialised")
+	if !i_ok {
+		self.WithCode("/register", response.Codes.InternalServerError)
+	}
+
+	first_name, first_name_ok := self.GetInput("firstName").(string)
+	last_name, last_name_ok := self.GetInput("lastName").(string)
+	email, email_ok := self.GetInput("email").(string)
+	password, password_ok := self.GetInput("password").(string)
+	confirmPassword, confirmPassword_ok := self.GetInput("confirmPassword").(string)
+
+	if !first_name_ok || !last_name_ok || !email_ok || !password_ok || !confirmPassword_ok {
+		// not ok
+		return &template.Response{
+			"error": "Please fill the values correctly",
 		}
 	}
 
-	// means it is a fresh application start it needs to register the first user
-	response := &template.Response{
-		"controller_name": "Register",
+	if password != confirmPassword {
+		return &template.Response{
+			"error": "Password and Confirm password do not match",
+		}
 	}
 
-	return response
+	if hashed_password, err := utils.HashPassword(password); err != nil {
+		return &template.Response{
+			"error": "Internal server error | failed to hash password",
+		}
+
+	} else if err := models.Users.Create().
+		Set("UserId").To(email).
+		Set("UserName").To(email).
+		Set("Password").To(hashed_password).
+		Set("FirstName").To(first_name).
+		Set("lastname").To(last_name).Exec(); err == nil {
+	} else {
+		return &template.Response{
+			"error": "Internal server error | failed to hash password " + err.Error(),
+		}
+	}
+
+	initialised["Value"] = "true"
+
+	models.App_state.UpdateComponent("initialised", initialised)
+
+	// models.App_state
+	self.Redirect("/")
+
+	return &template.EmptyResponse
+
 }

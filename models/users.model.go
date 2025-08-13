@@ -11,7 +11,7 @@ var Users = model.New("users", struct {
 }{
 	UserId: &model.Field{
 		Type:     model.FieldTypes.VarChar,
-		Length:   20,
+		Length:   100,
 		Nullable: false,
 		Index: model.Index{
 			PrimaryKey: true,
