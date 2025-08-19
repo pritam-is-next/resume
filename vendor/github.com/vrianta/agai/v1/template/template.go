@@ -67,19 +67,15 @@ func New(file_path, file_name, file_type string) (*Struct, error) {
 		content += `
 <script>
 const source = new EventSource("http://localhost:8888/hot-reload");
-
-// Helper function to check if current page is accessible
 async function isCurrentPageAccessible() {
     const url = window.location.origin;
     try {
         const response = await fetch(url, { method: "HEAD", mode: "no-cors" });
-        return response.ok || response.type === "opaque"; // opaque for no-cors
+        return response.ok || response.type === "opaque"; 
     } catch (err) {
         return false;
     }
 }
-
-// Reload if current page is accessible
 async function reloadIfAccessible() {
     const accessible = await isCurrentPageAccessible();
     if (accessible) {
