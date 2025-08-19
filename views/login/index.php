@@ -32,14 +32,14 @@
                                     <!-- Email input -->
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="loginEmail"
-                                            placeholder="name" name="loginEmail">
+                                            placeholder="name" name="loginEmail" value="<?= $$UserName ?>">
                                         <label for="loginEmail">User Name</label>
                                     </div>
 
                                     <!-- Password input -->
                                     <div class="form-floating mb-4">
                                         <input type="password" class="form-control" id="loginPassword"
-                                            placeholder="Password" name="loginPassword">
+                                            placeholder="Password" name="loginPassword" value="<?= $$Password ?>">
                                         <label for="loginPassword">Password</label>
                                     </div>
 
@@ -65,6 +65,12 @@
                                         <a href="/register">Register User</a>
                                     </div>
                                 </form>
+
+                                <?php if ($$error): ?>
+                                    <div class="text-danger">
+                                        Error : <?= $$error ?>
+                                    </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>

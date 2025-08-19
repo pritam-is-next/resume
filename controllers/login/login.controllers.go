@@ -5,21 +5,20 @@ import (
 	models "github.com/pritam-is-next/resume/models"
 	Controller "github.com/vrianta/agai/v1/controller"
 	Log "github.com/vrianta/agai/v1/log"
-	Template "github.com/vrianta/agai/v1/template"
+	"github.com/vrianta/agai/v1/template"
+	"github.com/vrianta/agai/v1/utils"
 )
-
-type login Controller.Context
 
 var Login = Controller.Context{
 	View: "login",
-	GET: func(self *Controller.Context) *Template.Response {
+	GET: func(self *Controller.Context) *template.Response {
 
 		if self.IsLoggedIn() {
 			self.Redirect("/admin")
-			return &Template.EmptyResponse
+			return &template.EmptyResponse
 		}
 
-		response := Template.Response{
+		response := template.Response{
 			"Title":          "Pritam Dutta",
 			"Heading":        "Pritam Dutta",
 			"NavItems":       models.Nav_items.GetComponents(),
@@ -32,39 +31,53 @@ var Login = Controller.Context{
 		}
 		return &response
 	},
-	POST: func(self *Controller.Context) *Template.Response {
+	POST: func(self *Controller.Context) *template.Response {
 
 		if self.IsLoggedIn() {
 			self.Redirect("/admin")
 			Log.WriteLog("Redirecting to Admin")
-			return &Template.EmptyResponse
+			return &template.EmptyResponse
 		}
 
 		email := self.GetInput("loginEmail")
 		password := self.GetInput("loginPassword")
 
 		if email == nil || password == nil {
-			self.Redirect("/login")
-			Log.WriteLog("Redirecting to Login")
-			return &Template.EmptyResponse
-		}
-
-		if user, err := models.Users.Get().
-			Where("userName").Is(email.(string)).
-			And().
-			Where("password").Is(password.(string)).
-			First(); err != nil {
-			Log.WriteLog("Got error while fetching ", err.Error())
-			return &Template.Response{
-				"email":    email,
-				"password": password,
+			return &template.Response{
+				"error": "email or password field is empty",
 			}
-		} else if user != nil {
-			self.Login()
-			// Log.WriteLog("Redirecting to Admin")
-			self.Redirect("/admin")
 		}
 
-		return &Template.EmptyResponse
+		if hashed_password, err := utils.HashPassword(password.(string)); err != nil {
+			return &template.Response{
+				"error": "Internal server error | failed to hash password",
+			}
+
+		} else {
+			if user, err := models.Users.Get().
+				Where("UserName").Is(email.(string)).
+				And().
+				Where("Password").Is(hashed_password).
+				First(); err != nil {
+				Log.WriteLog("Got error while fetching ", err.Error())
+				return &template.Response{
+					"email":    email,
+					"password": password,
+					"error":    err.Error(),
+				}
+			} else if user != nil {
+				self.Login()
+				// Log.WriteLog("Redirecting to Admin")
+				self.Redirect("/admin")
+			} else {
+				return &template.Response{
+					"UserName": email,
+					"Password": password,
+					"error":    "User Name or Password is wrong",
+				}
+			}
+		}
+
+		return &template.EmptyResponse
 	},
 }
