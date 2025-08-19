@@ -1,6 +1,7 @@
 {
 	"Https": false,
 	"Build": false,
+	"port": "1088",
 	"StaticFolders": [
 		"static"
 	],

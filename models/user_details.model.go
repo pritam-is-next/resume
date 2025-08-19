@@ -8,6 +8,7 @@ var User_details = model.New("user_details", struct {
 	Id          *model.Field
 	UserId      *model.Field
 	FullName    *model.Field
+	AboutMe     *model.Field
 	Email       *model.Field
 	Phone       *model.Field
 	Dob         *model.Field
@@ -38,6 +39,11 @@ var User_details = model.New("user_details", struct {
 		Nullable: false,
 		Type:     model.FieldTypes.VarChar,
 		Length:   100,
+	},
+
+	AboutMe: &model.Field{
+		Nullable: true,
+		Type:     model.FieldTypes.Text,
 	},
 
 	Email: &model.Field{
