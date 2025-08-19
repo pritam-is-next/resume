@@ -1,6 +1,8 @@
 package login
 
 import (
+	"fmt"
+
 	components "github.com/pritam-is-next/resume/components"
 	models "github.com/pritam-is-next/resume/models"
 	Controller "github.com/vrianta/agai/v1/controller"
@@ -56,8 +58,6 @@ var Login = Controller.Context{
 		} else {
 			if user, err := models.Users.Get().
 				Where("UserName").Is(email.(string)).
-				And().
-				Where("Password").Is(hashed_password).
 				First(); err != nil {
 				Log.WriteLog("Got error while fetching ", err.Error())
 				return &template.Response{
@@ -65,7 +65,9 @@ var Login = Controller.Context{
 					"password": password,
 					"error":    err.Error(),
 				}
-			} else if user != nil {
+			} else if user != nil && user["Password"] == hashed_password {
+				fmt.Println(user)
+				fmt.Println(hashed_password)
 				self.Login()
 				// Log.WriteLog("Redirecting to Admin")
 				self.Redirect("/admin")
