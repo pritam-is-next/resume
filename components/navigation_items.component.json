@@ -40,12 +40,5 @@
     "Href": "#contact-me",
     "Id": 5,
     "Name": "Contact"
-  },
-  "6": {
-    "Disabled": 0,
-    "Dropdown": null,
-    "Href": "#contact-me",
-    "Id": 6,
-    "Name": "Contact"
   }
 }

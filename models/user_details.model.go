@@ -33,7 +33,7 @@ var User_details = model.New("user_details", struct {
 		},
 	},
 
-	UserId: Users.Definition.UserId.ToForeignKey("CASCADE", "CASCADE", false, true, true),
+	UserId: Users.Fields.UserId.ToForeignKey("CASCADE", "CASCADE", false, true, true),
 
 	FullName: &model.Field{
 		Nullable: false,

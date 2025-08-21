@@ -1,8 +1,6 @@
 package login
 
 import (
-	"fmt"
-
 	components "github.com/pritam-is-next/resume/components"
 	models "github.com/pritam-is-next/resume/models"
 	Controller "github.com/vrianta/agai/v1/controller"
@@ -50,33 +48,23 @@ var Login = Controller.Context{
 			}
 		}
 
-		if hashed_password, err := utils.HashPassword(password.(string)); err != nil {
+		if user, err := models.Users.Get().
+			Where(models.Users.Fields.UserName).Is(email.(string)).
+			First(); err != nil {
+			Log.WriteLog("Got error while fetching ", err.Error())
 			return &template.Response{
-				"error": "Internal server error | failed to hash password",
+				"email":    email,
+				"password": password,
+				"error":    err.Error(),
 			}
-
+		} else if user != nil && utils.CheckPassword(user["Password"].(string), password.(string)) {
+			self.Login()
+			self.Redirect("/admin")
 		} else {
-			if user, err := models.Users.Get().
-				Where("UserName").Is(email.(string)).
-				First(); err != nil {
-				Log.WriteLog("Got error while fetching ", err.Error())
-				return &template.Response{
-					"email":    email,
-					"password": password,
-					"error":    err.Error(),
-				}
-			} else if user != nil && user["Password"] == hashed_password {
-				fmt.Println(user)
-				fmt.Println(hashed_password)
-				self.Login()
-				// Log.WriteLog("Redirecting to Admin")
-				self.Redirect("/admin")
-			} else {
-				return &template.Response{
-					"UserName": email,
-					"Password": password,
-					"error":    "User Name or Password is wrong",
-				}
+			return &template.Response{
+				"UserName": email,
+				"Password": password,
+				"error":    "User Name or Password is wrong",
 			}
 		}
 
