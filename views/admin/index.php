@@ -52,12 +52,12 @@
                 <div class="dropdown">
                     <a href="#" class="d-flex align-items-center text-body text-decoration-none dropdown-toggle"
                         data-bs-toggle="dropdown">
-                        <img src="https://via.placeholder.com/32/495057/ffffff?text=AD" alt="Admin"
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVA_HrQLjkHiJ2Ag5RGuwbFeDKRLfldnDasw&s" alt="Admin"
                             class="rounded-circle me-2" width="32">
                         <strong>Admin</strong>
                     </a>
                     <ul class="dropdown-menu shadow">
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Profile</a></li>
+                        <li><a class="dropdown-item" href="admin/profile"><i class="bi bi-person me-2"></i>Profile</a></li>
                         <li><a class="dropdown-item" href="#"><i class="bi bi-sliders me-2"></i>Settings</a></li>
                         <li>
                             <hr class="dropdown-divider">
@@ -227,7 +227,7 @@
     </div>
 
     <!-- Bootstrap JS -->
-    <script src="/Js/Bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="/js/Bootstrap/bootstrap.bundle.min.js"></script>
     <!-- Theme Toggle Script -->
     <script>
         document.getElementById('themeToggle').addEventListener('click', function() {
