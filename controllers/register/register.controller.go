@@ -89,14 +89,21 @@ var post = func(self *controller.Context) *template.Response {
 		}
 
 	} else if err := models.Users.Create().
-		Set("UserId").To(email).
-		Set("UserName").To(email).
-		Set("Password").To(hashed_password).
-		Set("FirstName").To(first_name).
-		Set("lastname").To(last_name).Exec(); err == nil {
-	} else {
+		Set(models.Users.Fields.UserId).To(email).
+		Set(models.Users.Fields.UserName).To(email).
+		Set(models.Users.Fields.Password).To(hashed_password).
+		Set(models.Users.Fields.FirstName).To(first_name).
+		Set(models.Users.Fields.LastName).To(last_name).Exec(); err != nil {
 		return &template.Response{
-			"error": "Internal server error | failed to hash password " + err.Error(),
+			"error": "Internal server error | failed to Create User Table " + err.Error(),
+		}
+	}
+
+	if err := models.User_details.Create().
+		Set(models.User_details.Fields.FullName).To(first_name + " " + last_name).
+		Set(models.User_details.Fields.AboutMe).To("I am Human").Exec(); err != nil {
+		return &template.Response{
+			"error": "Internal server error | failed to Create User Details Table " + err.Error(),
 		}
 	}
 

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CMS Admin Panel</title>
+    <title><?= $$Title ?></title>
     <!-- Bootstrap 5.3 CSS -->
     <link rel="stylesheet" href="/css/Bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="/css/Bootstrap-Icons/bootstrap-icons.css">
@@ -33,20 +34,30 @@
             tabindex="-1" style="width: 280px;">
             <div class="offcanvas-body d-flex flex-column h-100 p-3">
                 <a href="" class="d-flex align-items-center mb-3 text-body text-decoration-none">
-                    <span class="fs-4 fw-bold"><i class="bi bi-database-fill-gear me-2"></i>CMS Admin</span>
+                    <span class="fs-4 fw-bold"><i class="bi bi-database-fill-gear me-2"></i><?= $$Heading ?></span>
                 </a>
                 <hr class="border-secondary">
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active bg-body-secondary text-body" aria-current="page">
-                            <i class="bi bi-speedometer2 me-2"></i>Dashboard
-                        </a>
+                        <?php foreach ($$Nav_items as $key => $nav_item): ?>
+                            <?php if ($key == 0): ?>
+
+                                <a href="<?= $nav_item->Href ?>" class="nav-link active bg-body-secondary text-body" aria-current="page">
+                                    <?= $nav_item->Name ?>
+                                </a>
+
+                            <?php else: ?>
+
+                                <a href="<?= $nav_item->Href ?>" class="nav-link text-body">
+                                    <?= $nav_item->Name ?>
+                                </a>
+
+                            <?php endif ?>
+
+                        <?php endforeach ?>
+
+
                     </li>
-                    <li><a href="#" class="nav-link text-body"><i class="bi bi-file-earmark-text me-2"></i>Posts</a>
-                    </li>
-                    <li><a href="#" class="nav-link text-body"><i class="bi bi-people me-2"></i>Users</a></li>
-                    <li><a href="#" class="nav-link text-body"><i class="bi bi-images me-2"></i>Media</a></li>
-                    <li><a href="#" class="nav-link text-body"><i class="bi bi-gear me-2"></i>Settings</a></li>
                 </ul>
                 <hr class="border-secondary">
                 <div class="dropdown">
@@ -54,7 +65,7 @@
                         data-bs-toggle="dropdown">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVA_HrQLjkHiJ2Ag5RGuwbFeDKRLfldnDasw&s" alt="Admin"
                             class="rounded-circle me-2" width="32">
-                        <strong>Admin</strong>
+                        <strong><?= $$User_Details->FullName ?></strong>
                     </a>
                     <ul class="dropdown-menu shadow">
                         <li><a class="dropdown-item" href="admin/profile"><i class="bi bi-person me-2"></i>Profile</a></li>

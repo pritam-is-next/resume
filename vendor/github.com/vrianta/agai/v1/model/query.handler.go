@@ -239,7 +239,18 @@ func (q *queryBuilder) IsNotNull() *queryBuilder {
 // Set marks the start of an UPDATE operation, specifying which field to update.
 // Call this before .To().
 // Example: .Set("name")
-func (q *queryBuilder) Set(field string) *queryBuilder {
+func (q *queryBuilder) Set(field *Field) *queryBuilder {
+	if field == nil {
+		panic("Field can not be nil or empty while setting it")
+	}
+	q.lastSet = field.name
+	if q.operation == "" {
+		q.operation = "update" // default fallback
+	}
+	return q
+}
+
+func (q *queryBuilder) SetWithFieldName(field string) *queryBuilder {
 	q.lastSet = field
 	if q.operation == "" {
 		q.operation = "update" // default fallback
@@ -262,8 +273,8 @@ func (q *queryBuilder) To(value any) *queryBuilder {
 }
 
 // Set marks the start of an InsertRow operation, specifying which field to InsertRow.
-func (q *InsertRowBuilder) Set(field string) *InsertRowBuilder {
-	q.lastSet = field
+func (q *InsertRowBuilder) Set(field *Field) *InsertRowBuilder {
+	q.lastSet = field.name
 	return q
 }
 

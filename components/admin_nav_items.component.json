@@ -1,0 +1,37 @@
+{
+  "0": {
+    "Disabled": 0,
+    "Dropdown": null,
+    "Href": "#dashboard",
+    "Id": 0,
+    "Name": "Dashboard"
+  },
+  "1": {
+    "Disabled": 0,
+    "Dropdown": null,
+    "Href": "#posts",
+    "Id": 1,
+    "Name": "Posts"
+  },
+  "2": {
+    "Disabled": 0,
+    "Dropdown": null,
+    "Href": "#users",
+    "Id": 2,
+    "Name": "Users"
+  },
+  "3": {
+    "Disabled": 0,
+    "Dropdown": null,
+    "Href": "#media",
+    "Id": 3,
+    "Name": "Media"
+  },
+  "4": {
+    "Disabled": 0,
+    "Dropdown": null,
+    "Href": "#settings",
+    "Id": 4,
+    "Name": "Settings"
+  }
+}
