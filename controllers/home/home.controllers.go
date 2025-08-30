@@ -26,7 +26,7 @@ var GET = func(self *Controller.Context) *Template.Response {
 		panic("component do not have attrbiute Value")
 	}
 
-	if val == "false" {
+	if val == "f" {
 		// means the application is first time starting and needs to be registered with the user
 		self.Redirect("/register")
 	}

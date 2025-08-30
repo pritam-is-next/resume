@@ -100,6 +100,7 @@ var post = func(self *controller.Context) *template.Response {
 	}
 
 	if err := models.User_details.Create().
+		Set(models.User_details.Fields.UserId).To(email).
 		Set(models.User_details.Fields.FullName).To(first_name + " " + last_name).
 		Set(models.User_details.Fields.AboutMe).To("I am Human").Exec(); err != nil {
 		return &template.Response{
@@ -107,7 +108,7 @@ var post = func(self *controller.Context) *template.Response {
 		}
 	}
 
-	initialised["Value"] = "true"
+	initialised["Value"] = "t"
 
 	models.App_state.UpdateComponent("initialised", initialised)
 

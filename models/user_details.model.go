@@ -24,9 +24,10 @@ var User_details = model.New("user_details", struct {
 	UpdatedAt   *model.Field
 }{
 	Id: &model.Field{
-		Nullable: false,
-		Type:     model.FieldTypes.Int,
-		Length:   10,
+		Nullable:      false,
+		Type:          model.FieldTypes.Int,
+		Length:        10,
+		AutoIncrement: true,
 		Index: model.Index{
 			PrimaryKey: true,
 			Index:      true,
