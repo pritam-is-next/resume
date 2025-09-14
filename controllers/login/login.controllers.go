@@ -1,0 +1,73 @@
+package login
+
+import (
+	components "github.com/pritam-is-next/resume/components"
+	models "github.com/pritam-is-next/resume/models"
+	Controller "github.com/vrianta/agai/v1/controller"
+	Log "github.com/vrianta/agai/v1/log"
+	"github.com/vrianta/agai/v1/template"
+	"github.com/vrianta/agai/v1/utils"
+)
+
+var Login = Controller.Context{
+	View: "login",
+	GET: func(self *Controller.Context) *template.Response {
+
+		if self.IsLoggedIn() {
+			self.Redirect("/admin")
+			return &template.EmptyResponse
+		}
+
+		response := template.Response{
+			"Title":          "Pritam Dutta",
+			"Heading":        "Pritam Dutta",
+			"NavItems":       models.Nav_items.GetComponents(),
+			"Hero":           components.Hero,
+			"AboutMe":        components.AboutMe,
+			"Skills":         components.Skills,
+			"Experiences":    components.Experiences,
+			"Projects":       components.Projects,
+			"ContactDetails": components.ContactDetails,
+		}
+		return &response
+	},
+	POST: func(self *Controller.Context) *template.Response {
+
+		if self.IsLoggedIn() {
+			self.Redirect("/admin")
+			Log.WriteLog("Redirecting to Admin")
+			return &template.EmptyResponse
+		}
+
+		email := self.GetInput("loginEmail")
+		password := self.GetInput("loginPassword")
+
+		if email == nil || password == nil {
+			return &template.Response{
+				"error": "email or password field is empty",
+			}
+		}
+
+		if user, err := models.Users.Get().
+			Where(models.Users.Fields.UserName).Is(email.(string)).
+			First(); err != nil {
+			Log.WriteLog("Got error while fetching ", err.Error())
+			return &template.Response{
+				"email":    email,
+				"password": password,
+				"error":    err.Error(),
+			}
+		} else if user != nil && utils.CheckPassword(user["Password"].(string), password.(string)) {
+			self.Login()
+			self.Redirect("/admin")
+		} else {
+			return &template.Response{
+				"UserName": email,
+				"Password": password,
+				"error":    "User Name or Password is wrong",
+			}
+		}
+
+		return &template.EmptyResponse
+	},
+}

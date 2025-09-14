@@ -1,6 +1,7 @@
 {
 	"Https": false,
-	"Build": true,
+	"Build": false,
+	"port": "1088",
 	"StaticFolders": [
 		"static"
 	],
@@ -10,5 +11,5 @@
 	"JsFolders": [
 		"js"
 	],
-	"SessionStoreType": "disk"
+	"SessionStoreType": "db"
 }
