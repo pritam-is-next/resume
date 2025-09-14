@@ -3,6 +3,24 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Portfolio of Pritam Dutta, a DevOps Engineer skilled in Azure, Kubernetes, Terraform, CI/CD, and cloud automation. Explore projects, open-source contributions, and career highlights.">
+    <meta name="keywords" content="DevOps Engineer, Cloud Engineer, Azure, Kubernetes, Terraform, CI/CD, Automation, Cloud Infrastructure, Portfolio, Pritam Dutta">
+    <meta name="author" content="Pritam Dutta">
+
+    <!-- Mobile Responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Open Graph (for social sharing) -->
+  <meta property="og:title" content="Pritam Dutta | DevOps Engineer Portfolio">
+  <meta property="og:description" content="DevOps Engineer specializing in Azure, Kubernetes, and automation. Check out my projects and experience.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pritam.dutta.vrianta.in/">
+
+  <!-- Twitter Card (for better Twitter preview) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pritam Dutta | DevOps Engineer">
+  <meta name="twitter:description" content="Cloud & DevOps Engineer skilled in Azure, Kubernetes, Terraform, and CI/CD.">
+    
     <title>
         <?= $$Title ?> | Portfolio
     </title>
