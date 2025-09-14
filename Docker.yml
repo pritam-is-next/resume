@@ -2,7 +2,12 @@ name: pritam_dutta_resume
 services:
   pritam-resume:
     cpu_shares: 50
-    command: []
+    command:
+      - /bin/bash
+      - -c
+      - " apt update && 
+          apt install -y build-essential gcc libc6-dev libc-dev && 
+          cd /usr/src/ && apt install gcc -y && go mod tidy && go build"
     container_name: Pritam-Resume
     deploy:
       resources:
@@ -11,9 +16,7 @@ services:
     entrypoint:
       - /bin/bash
       - -c
-      - " apt update && apt install -y build-essential gcc libc6-dev libc-dev &&
-        cd /usr/src/ && apt install gcc -y && go mod tidy && go build &&
-        ./resume"
+      - " cd /usr/src/ && ./resume -ss -mc -mm"
     environment:
       - BUILD=true
       - DB_DATABASE=resume
