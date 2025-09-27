@@ -3,16 +3,14 @@ package home
 import (
 	components "github.com/pritam-is-next/resume/components"
 	models "github.com/pritam-is-next/resume/models"
-	Controller "github.com/vrianta/agai/v1/controller"
-	Template "github.com/vrianta/agai/v1/template"
+	"github.com/vrianta/agai/v1/controller"
 )
 
-var Home = Controller.Context{
-	View: "home",
-	GET:  GET,
+type Controller struct {
+	controller.Context
 }
 
-var GET = func(self *Controller.Context) *Template.Response {
+func (c Controller) GET() controller.View {
 
 	initialised, ok := models.App_state.GetComponent("initialised")
 
@@ -28,11 +26,11 @@ var GET = func(self *Controller.Context) *Template.Response {
 
 	if val == "f" {
 		// means the application is first time starting and needs to be registered with the user
-		self.Redirect("/register")
+		c.Redirect("/register")
 	}
 
 	nav_items := models.Nav_items.GetComponents()
-	response := &Template.Response{
+	response := &controller.Response{
 		"Title":          "Pritam Dutta",
 		"Heading":        "Pritam Dutta",
 		"NavItems":       nav_items,
@@ -44,5 +42,5 @@ var GET = func(self *Controller.Context) *Template.Response {
 		"ContactDetails": components.ContactDetails,
 	}
 
-	return response
+	return response.ToView("home")
 }

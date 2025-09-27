@@ -2,7 +2,6 @@ package profile
 
 import (
 	"github.com/vrianta/agai/v1/controller"
-	"github.com/vrianta/agai/v1/template"
 )
 
 /*
@@ -21,16 +20,14 @@ you only need to set that and you're good to go.
 This setup keeps things simple — define what you need, skip what you don't.
 */
 
-
-var Controller = controller.Context{
-	View: "profile",
-	GET:  GET,
+type Controller struct {
+	controller.Context
 }
 
-var GET = func(self *controller.Context) *template.Response {
-	response := &template.Response{
-		"controller_name":          "Profile",
+func (c *Controller) GET() controller.View {
+	response := controller.Response{
+		"controller_name": "Profile",
 	}
 
-	return response
+	return response.ToView("profile")
 }

@@ -1,14 +1,15 @@
 package logout
 
 import (
-	Controller "github.com/vrianta/agai/v1/controller"
-	Template "github.com/vrianta/agai/v1/template"
+	"github.com/vrianta/agai/v1/controller"
 )
 
-var Logout = Controller.Context{
-	GET: func(self *Controller.Context) *Template.Response {
-		self.Logout()
-		self.Redirect("/")
-		return &Template.NoResponse
-	},
+type Controller struct {
+	controller.Context
+}
+
+func (c *Controller) GET() controller.View {
+	c.Logout()
+	c.Redirect("/")
+	return controller.EmptyResponse().ToView("home")
 }

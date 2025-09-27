@@ -2,7 +2,9 @@ module github.com/pritam-is-next/resume
 
 go 1.24.3
 
-replace github.com/vrianta/agai => ../agai
+replace (
+ "github.com/vrianta/agai" => "../agai"
+)
 
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect

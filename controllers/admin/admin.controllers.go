@@ -4,43 +4,44 @@ import (
 	"fmt"
 
 	"github.com/pritam-is-next/resume/models"
-	Controller "github.com/vrianta/agai/v1/controller"
-	Template "github.com/vrianta/agai/v1/template"
+	"github.com/vrianta/agai/v1/controller"
+	"github.com/vrianta/agai/v1/log"
 )
 
-var Admin = Controller.Context{
-	View: "admin",
-	GET:  GET,
+type Controller struct {
+	controller.Context
 }
 
-var GET = func(self *Controller.Context) *Template.Response {
+func (c *Controller) GET() controller.View {
 
-	if !self.IsLoggedIn() {
-		self.Redirect("/login")
+	if !c.IsLoggedIn() {
+		log.WriteLogf("Unauthorized access to admin panel. Redirecting to login.")
+		c.Redirect("/login")
+		return controller.EmptyResponse().ToView("login")
 	}
 
 	admin_nav_items, err := models.Admin_navItems.Get().Fetch()
 
 	if err != nil {
 		fmt.Println("Failed to fetch the admin_navitems")
-		return &Template.NoResponse
+		return controller.EmptyResponse().ToView("admin")
 	}
 
 	user_details, err := models.User_details.Get().First()
 	if err != nil {
 		fmt.Println("Failed to Fetch User Details")
-		return &Template.NoResponse
+		return controller.EmptyResponse().ToView("admin")
 	}
 
-	fmt.Println(admin_nav_items)
+	// fmt.Println(admin_nav_items)
 
-	response := Template.Response{
+	response := controller.Response{
 		"Title":        "Pritam Dutta",
 		"Heading":      "Admin Panel",
 		"Name":         "Pritam Dutta",
 		"Nav_items":    admin_nav_items,
 		"User_Details": user_details,
 	}
-
-	return &response
+	fmt.Println("Admin Panel Accessed")
+	return response.ToView("admin")
 }

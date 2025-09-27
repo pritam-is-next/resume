@@ -4,8 +4,6 @@ import (
 	"github.com/pritam-is-next/resume/models"
 	"github.com/vrianta/agai/v1/controller"
 	"github.com/vrianta/agai/v1/log"
-	"github.com/vrianta/agai/v1/response"
-	"github.com/vrianta/agai/v1/template"
 	"github.com/vrianta/agai/v1/utils"
 )
 
@@ -25,13 +23,11 @@ you only need to set that and you're good to go.
 This setup keeps things simple — define what you need, skip what you don't.
 */
 
-var Controller = controller.Context{
-	View: "register",
-	GET:  get,
-	POST: post,
+type Controller struct {
+	controller.Context
 }
 
-var get = func(self *controller.Context) *template.Response {
+func (c *Controller) GET() controller.View {
 
 	component, ok := models.App_state.GetComponent("initialised")
 
@@ -52,41 +48,41 @@ var get = func(self *controller.Context) *template.Response {
 
 	log.Info("%s", initialised)
 	if initialised == "true" {
-		self.Redirect("/")
+		c.Redirect("/")
 	}
 
-	return &template.EmptyResponse
+	return controller.EmptyResponse().ToView("register")
 }
 
-var post = func(self *controller.Context) *template.Response {
+func (c *Controller) POST() controller.View {
 	initialised, i_ok := models.App_state.GetComponent("initialised")
 	if !i_ok {
-		self.WithCode("/register", response.Codes.InternalServerError)
+		c.WithCode("/register", controller.HttpStatus.InternalServerError)
 	}
 
-	first_name, first_name_ok := self.GetInput("firstName").(string)
-	last_name, last_name_ok := self.GetInput("lastName").(string)
-	email, email_ok := self.GetInput("email").(string)
-	password, password_ok := self.GetInput("password").(string)
-	confirmPassword, confirmPassword_ok := self.GetInput("confirmPassword").(string)
+	first_name, first_name_ok := c.GetInput("firstName").(string)
+	last_name, last_name_ok := c.GetInput("lastName").(string)
+	email, email_ok := c.GetInput("email").(string)
+	password, password_ok := c.GetInput("password").(string)
+	confirmPassword, confirmPassword_ok := c.GetInput("confirmPassword").(string)
 
 	if !first_name_ok || !last_name_ok || !email_ok || !password_ok || !confirmPassword_ok {
 		// not ok
-		return &template.Response{
+		return (&controller.Response{
 			"error": "Please fill the values correctly",
-		}
+		}).ToView("register")
 	}
 
 	if password != confirmPassword {
-		return &template.Response{
+		return (&controller.Response{
 			"error": "Password and Confirm password do not match",
-		}
+		}).ToView("register")
 	}
 
 	if hashed_password, err := utils.HashPassword(password); err != nil {
-		return &template.Response{
+		return (&controller.Response{
 			"error": "Internal server error | failed to hash password",
-		}
+		}).ToView("register")
 
 	} else if err := models.Users.Create().
 		Set(models.Users.Fields.UserId).To(email).
@@ -94,18 +90,18 @@ var post = func(self *controller.Context) *template.Response {
 		Set(models.Users.Fields.Password).To(hashed_password).
 		Set(models.Users.Fields.FirstName).To(first_name).
 		Set(models.Users.Fields.LastName).To(last_name).Exec(); err != nil {
-		return &template.Response{
+		return (&controller.Response{
 			"error": "Internal server error | failed to Create User Table " + err.Error(),
-		}
+		}).ToView("register")
 	}
 
 	if err := models.User_details.Create().
 		Set(models.User_details.Fields.UserId).To(email).
 		Set(models.User_details.Fields.FullName).To(first_name + " " + last_name).
 		Set(models.User_details.Fields.AboutMe).To("I am Human").Exec(); err != nil {
-		return &template.Response{
+		return (&controller.Response{
 			"error": "Internal server error | failed to Create User Details Table " + err.Error(),
-		}
+		}).ToView("register")
 	}
 
 	initialised["Value"] = "t"
@@ -113,8 +109,8 @@ var post = func(self *controller.Context) *template.Response {
 	models.App_state.UpdateComponent("initialised", initialised)
 
 	// models.App_state
-	self.Redirect("/")
+	c.Redirect("/")
 
-	return &template.EmptyResponse
+	return controller.EmptyResponse().ToView("register")
 
 }
