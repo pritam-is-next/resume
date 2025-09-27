@@ -7,7 +7,7 @@ import (
 	"github.com/pritam-is-next/resume/controllers/logout"
 	"github.com/pritam-is-next/resume/controllers/profile"
 	"github.com/pritam-is-next/resume/controllers/register"
-	Router "github.com/vrianta/agai/v1/router"
+	"github.com/vrianta/agai/v1/router"
 )
 
 // Register Routes initializes the routes for the application.
@@ -19,7 +19,7 @@ func init() {
 	// Router.CreateRoute("/register", &register.Controller{})
 	// Router.CreateRoute("/admin/profile", &profile.Controller{})
 
-	Router.New("").
+	router.New("").
 		AddRoute("home", &home.Controller{}).
 		AddRoute("admin", &admin.Controller{}).
 		AddRoute("login", &login.Controller{}).
