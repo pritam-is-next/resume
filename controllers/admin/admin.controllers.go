@@ -42,6 +42,6 @@ func (c *Controller) GET() controller.View {
 		"Nav_items":    admin_nav_items,
 		"User_Details": user_details,
 	}
-	fmt.Println("Admin Panel Accessed")
+	// fmt.Println("Admin Panel Accessed")
 	return response.ToView("admin")
 }
