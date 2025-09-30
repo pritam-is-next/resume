@@ -14,6 +14,7 @@ type Controller struct {
 
 func (c *Controller) GET() controller.View {
 	if c.IsLoggedIn() {
+		log.Debug("User is Alreadt Logged In in Login GET Method")
 		c.Redirect("/admin")
 		return controller.EmptyResponse().ToView("login")
 	}
@@ -60,8 +61,9 @@ func (c *Controller) POST() controller.View {
 		}
 		return r.ToView("login")
 	} else if user != nil && utils.CheckPassword(user["Password"].(string), password.(string)) {
+		log.Debug("Successfully Logged in")
 		c.Login()
-		c.Redirect("/admin")
+		c.Redirect("/")
 	} else {
 		r := controller.Response{
 			"UserName": email,
@@ -71,5 +73,5 @@ func (c *Controller) POST() controller.View {
 		return r.ToView("login")
 	}
 
-	return controller.EmptyResponse().ToView("login")
+	return controller.EmptyResponse().ToView("")
 }

@@ -12,20 +12,22 @@ import (
 
 // Register Routes initializes the routes for the application.
 func init() {
-	// Router.CreateRoute("/home", &home.Controller{})
-	// Router.CreateRoute("/admin", &admin.Controller{})
-	// Router.CreateRoute("/login", &login.Controller{})
-	// Router.CreateRoute("/logout", &logout.Controller{})
-	// Router.CreateRoute("/register", &register.Controller{})
-	// Router.CreateRoute("/admin/profile", &profile.Controller{})
+	router.CreateRoute[home.Controller]("/")
+	router.CreateRoute[home.Controller]("/home")
+	router.CreateRoute[admin.Controller]("/admin")
+	router.CreateRoute[login.Controller]("/login")
+	router.CreateRoute[logout.Controller]("/logout")
+	router.CreateRoute[register.Controller]("/register")
+	router.CreateRoute[profile.Controller]("/admin/profile")
 
-	router.New("").
-		AddRoute("home", &home.Controller{}).
-		AddRoute("admin", &admin.Controller{}).
-		AddRoute("login", &login.Controller{}).
-		AddRoute("logout", &logout.Controller{}).
-		AddRoute("register", &register.Controller{}).
-		AddRoute("admin/profile", &profile.Controller{})
+	// router.New("").
+	// 	AddRoute("", &home.Controller{}).
+	// 	AddRoute("home", &home.Controller{}).
+	// 	AddRoute("admin", &admin.Controller{}).
+	// 	AddRoute("login", &login.Controller{}).
+	// 	AddRoute("logout", &logout.Controller{}).
+	// 	AddRoute("register", &register.Controller{}).
+	// 	AddRoute("admin/profile", &profile.Controller{})
 	// Router.New("/").RegisterRoutes(
 	// 	Router.Route("", Controllers.Home),
 	// 	Router.Route("home", Controllers.Home),

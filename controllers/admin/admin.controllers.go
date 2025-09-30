@@ -15,9 +15,9 @@ type Controller struct {
 func (c *Controller) GET() controller.View {
 
 	if !c.IsLoggedIn() {
-		log.WriteLogf("Unauthorized access to admin panel. Redirecting to login.")
+		log.WriteLogf("Unauthorized access to admin panel. Redirecting to login.\n")
 		c.Redirect("/login")
-		return controller.EmptyResponse().ToView("login")
+		return controller.EmptyResponse().ToView("")
 	}
 
 	admin_nav_items, err := models.Admin_navItems.Get().Fetch()
