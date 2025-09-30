@@ -80,7 +80,7 @@
 
     </main>
     <footer>
-        <script src="/Js/Bootstrap/bootstrap.min.js"></script>
+        <script src="/js/Bootstrap/bootstrap.min.js"></script>
     </footer>
 </body>
 
