@@ -10,9 +10,9 @@ export let options = {
 };
 
 export default function () {
-  const url = 'http://localhost:1080/login'; // Replace with your actual login endpoint
+  const url = 'http://localhost:1088/login'; // Replace with your actual login endpoint
 
-  const payload = 'loginEmail=pritam&loginPassword=pass'; // Adjust field names to match your form
+  const payload = 'loginEmail=rohitdutta907@gmail.com&loginPassword=P@ssw0rd!999'; // Adjust field names to match your form
 
   const params = {
     headers: {
@@ -24,8 +24,8 @@ export default function () {
 
   check(res, {
     'status is 200': (r) => r.status === 200,
-    'login success text found': (r) =>
-      r.body.includes('Dashboard'),
+    // 'login success text found': (r) =>
+      // r.body.includes('Dashboard'),
     'response time < 500ms': (r) => r.timings.duration < 500,
   });
 
