@@ -29,5 +29,5 @@ func (c *Controller) GET() agai.View {
 		"controller_name": "Profile",
 	}
 
-	return response.AsView("profile")
+	return c.View("profile", response)
 }

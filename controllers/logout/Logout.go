@@ -10,6 +10,5 @@ type Controller struct {
 
 func (c *Controller) GET() agai.View {
 	c.Logout()
-	c.Redirect("/")
-	return agai.EmptyResponse().AsView("home")
+	return c.Redirect("/")
 }

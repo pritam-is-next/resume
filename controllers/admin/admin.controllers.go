@@ -16,21 +16,20 @@ func (c *Controller) GET() agai.View {
 
 	if !c.IsLoggedIn() {
 		log.WriteLogf("Unauthorized access to admin panel. Redirecting to login.\n")
-		c.Redirect("/login")
-		return agai.EmptyResponse().AsView("")
+		return c.Redirect("/login")
 	}
 
 	admin_nav_items, err := models.Admin_navItems.Get().Fetch()
 
 	if err != nil {
 		fmt.Println("Failed to fetch the admin_navitems")
-		return agai.EmptyResponse().AsView("admin")
+		return c.View("admin", c.EmptyResponse())
 	}
 
 	user_details, err := models.User_details.Get().First()
 	if err != nil {
 		fmt.Println("Failed to Fetch User Details")
-		return agai.EmptyResponse().AsView("admin")
+		return c.View("admin", c.EmptyResponse())
 	}
 
 	// fmt.Println(admin_nav_items)
@@ -43,5 +42,5 @@ func (c *Controller) GET() agai.View {
 		"User_Details": user_details,
 	}
 	// fmt.Println("Admin Panel Accessed")
-	return response.AsView("admin")
+	return c.View("admin", response)
 }

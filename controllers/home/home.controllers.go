@@ -42,5 +42,5 @@ func (c Controller) GET() agai.View {
 		"ContactDetails": components.ContactDetails,
 	}
 
-	return response.AsView("home")
+	return c.View("home", response)
 }

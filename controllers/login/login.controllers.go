@@ -16,8 +16,10 @@ func (c *Controller) GET() agai.View {
 	if c.IsLoggedIn() {
 		log.Debug("User is Alreadt Logged In in Login GET Method")
 		c.Redirect("/admin")
-		return agai.EmptyResponse().AsView("login")
+		return c.View("login", c.EmptyResponse())
 	}
+
+	c.GetInputs()
 
 	response := agai.Response{
 		"Title":          "Pritam Dutta",
@@ -30,14 +32,13 @@ func (c *Controller) GET() agai.View {
 		"Projects":       components.Projects,
 		"ContactDetails": components.ContactDetails,
 	}
-	return response.AsView("login")
+	return c.View("login", response)
 }
 
 func (c *Controller) POST() agai.View {
 	if c.IsLoggedIn() {
-		c.Redirect("/admin")
 		log.WriteLog("Redirecting to Admin")
-		return agai.EmptyResponse().AsView("login")
+		return c.Redirect("/admin")
 	}
 
 	email := c.GetInput("loginEmail")
@@ -47,7 +48,7 @@ func (c *Controller) POST() agai.View {
 		r := agai.Response{
 			"error": "email or password field is empty",
 		}
-		return r.AsView("login")
+		return c.View("login", r)
 	}
 
 	if user, err := models.Users.Get().
@@ -59,19 +60,19 @@ func (c *Controller) POST() agai.View {
 			"password": password,
 			"error":    err.Error(),
 		}
-		return r.AsView("login")
+		return c.View("login", r)
 	} else if user != nil && utils.CheckPassword(user["Password"].(string), password.(string)) {
 		log.Debug("Successfully Logged in")
 		c.Login()
-		c.Redirect("/")
+		c.Redirect("/home")
 	} else {
 		r := agai.Response{
 			"UserName": email,
 			"Password": password,
 			"error":    "User Name or Password is wrong",
 		}
-		return r.AsView("login")
+		return c.View("login", r)
 	}
 
-	return agai.EmptyResponse().AsView("")
+	return c.View("home", c.EmptyResponse())
 }

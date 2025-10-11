@@ -48,16 +48,16 @@ func (c *Controller) GET() agai.View {
 
 	log.Info("%s", initialised)
 	if initialised == "true" {
-		c.Redirect("/")
+		return c.Redirect("/")
 	}
 
-	return agai.EmptyResponse().AsView("register")
+	return c.View("register", c.EmptyResponse())
 }
 
 func (c *Controller) POST() agai.View {
 	initialised, i_ok := models.App_state.GetComponent("initialised")
 	if !i_ok {
-		c.WithCode("/register", agai.HttpStatus.InternalServerError)
+		return c.RedirectWithCode("/register", agai.HttpStatus.InternalServerError)
 	}
 
 	first_name, first_name_ok := c.GetInput("firstName").(string)
@@ -68,21 +68,21 @@ func (c *Controller) POST() agai.View {
 
 	if !first_name_ok || !last_name_ok || !email_ok || !password_ok || !confirmPassword_ok {
 		// not ok
-		return (&agai.Response{
+		return c.View("register", &agai.Response{
 			"error": "Please fill the values correctly",
-		}).AsView("register")
+		})
 	}
 
 	if password != confirmPassword {
-		return (&agai.Response{
+		return c.View("register", &agai.Response{
 			"error": "Password and Confirm password do not match",
-		}).AsView("register")
+		})
 	}
 
 	if hashed_password, err := utils.HashPassword(password); err != nil {
-		return (&agai.Response{
+		return c.View("register", &agai.Response{
 			"error": "Internal server error | failed to hash password",
-		}).AsView("register")
+		})
 
 	} else if err := models.Users.Create().
 		Set(models.Users.Fields.UserId).To(email).
@@ -90,18 +90,18 @@ func (c *Controller) POST() agai.View {
 		Set(models.Users.Fields.Password).To(hashed_password).
 		Set(models.Users.Fields.FirstName).To(first_name).
 		Set(models.Users.Fields.LastName).To(last_name).Exec(); err != nil {
-		return (&agai.Response{
+		return c.View("register", &agai.Response{
 			"error": "Internal server error | failed to Create User Table " + err.Error(),
-		}).AsView("register")
+		})
 	}
 
 	if err := models.User_details.Create().
 		Set(models.User_details.Fields.UserId).To(email).
 		Set(models.User_details.Fields.FullName).To(first_name + " " + last_name).
 		Set(models.User_details.Fields.AboutMe).To("I am Human").Exec(); err != nil {
-		return (&agai.Response{
+		return c.View("register", &agai.Response{
 			"error": "Internal server error | failed to Create User Details Table " + err.Error(),
-		}).AsView("register")
+		})
 	}
 
 	initialised["Value"] = "t"
@@ -109,8 +109,6 @@ func (c *Controller) POST() agai.View {
 	models.App_state.UpdateComponent("initialised", initialised)
 
 	// models.App_state
-	c.Redirect("/")
-
-	return agai.EmptyResponse().AsView("register")
+	return c.Redirect("/")
 
 }

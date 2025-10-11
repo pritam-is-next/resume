@@ -19,25 +19,4 @@ func init() {
 	agai.CreateRoute[logout.Controller]("/logout")
 	agai.CreateRoute[register.Controller]("/register")
 	agai.CreateRoute[profile.Controller]("/admin/profile")
-
-	// router.New("").
-	// 	AddRoute("", &home.Controller{}).
-	// 	AddRoute("home", &home.Controller{}).
-	// 	AddRoute("admin", &admin.Controller{}).
-	// 	AddRoute("login", &login.Controller{}).
-	// 	AddRoute("logout", &logout.Controller{}).
-	// 	AddRoute("register", &register.Controller{}).
-	// 	AddRoute("admin/profile", &profile.Controller{})
-	// Router.New("/").RegisterRoutes(
-	// 	Router.Route("", Controllers.Home),
-	// 	Router.Route("home", Controllers.Home),
-	// 	Router.Route("admin", Controllers.Admin),
-	// 	Router.Route("login", Controllers.Login),
-	// 	Router.Route("logout", Controllers.Logout),
-	// 	Router.Route("register", register.Controller),
-	// 	Router.Route("test", test.Controller),
-	// 	Router.Route("admin/profile", profile.Controller),
-	// )
-
-	// Router.New("/api/").RegisterRoutes()
 }
