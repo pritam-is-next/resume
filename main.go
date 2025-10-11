@@ -9,5 +9,7 @@ import (
 
 func main() {
 	runtime.GOMAXPROCS(1)
-	agai.New() // creating new application
+	app := agai.New() // creating new application
+
+	app.Start()
 }

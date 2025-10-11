@@ -1,15 +1,15 @@
 package logout
 
 import (
-	"github.com/vrianta/agai/v1/controller"
+	"github.com/vrianta/agai/v1"
 )
 
 type Controller struct {
-	controller.Context
+	agai.Controller
 }
 
-func (c *Controller) GET() controller.View {
+func (c *Controller) GET() agai.View {
 	c.Logout()
 	c.Redirect("/")
-	return controller.EmptyResponse().ToView("home")
+	return agai.EmptyResponse().AsView("home")
 }

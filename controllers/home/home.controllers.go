@@ -3,14 +3,14 @@ package home
 import (
 	components "github.com/pritam-is-next/resume/components"
 	models "github.com/pritam-is-next/resume/models"
-	"github.com/vrianta/agai/v1/controller"
+	"github.com/vrianta/agai/v1"
 )
 
 type Controller struct {
-	controller.Context
+	agai.Controller
 }
 
-func (c Controller) GET() controller.View {
+func (c Controller) GET() agai.View {
 
 	initialised, ok := models.App_state.GetComponent("initialised")
 
@@ -30,7 +30,7 @@ func (c Controller) GET() controller.View {
 	}
 
 	nav_items := models.Nav_items.GetComponents()
-	response := &controller.Response{
+	response := &agai.Response{
 		"Title":          "Pritam Dutta",
 		"Heading":        "Pritam Dutta",
 		"NavItems":       nav_items,
@@ -42,5 +42,5 @@ func (c Controller) GET() controller.View {
 		"ContactDetails": components.ContactDetails,
 	}
 
-	return response.ToView("home")
+	return response.AsView("home")
 }

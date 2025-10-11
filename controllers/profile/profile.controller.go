@@ -1,7 +1,7 @@
 package profile
 
 import (
-	"github.com/vrianta/agai/v1/controller"
+	"github.com/vrianta/agai/v1"
 )
 
 /*
@@ -21,13 +21,13 @@ This setup keeps things simple — define what you need, skip what you don't.
 */
 
 type Controller struct {
-	controller.Context
+	agai.Controller
 }
 
-func (c *Controller) GET() controller.View {
-	response := controller.Response{
+func (c *Controller) GET() agai.View {
+	response := agai.Response{
 		"controller_name": "Profile",
 	}
 
-	return response.ToView("profile")
+	return response.AsView("profile")
 }

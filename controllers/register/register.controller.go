@@ -2,7 +2,7 @@ package register
 
 import (
 	"github.com/pritam-is-next/resume/models"
-	"github.com/vrianta/agai/v1/controller"
+	"github.com/vrianta/agai/v1"
 	"github.com/vrianta/agai/v1/log"
 	"github.com/vrianta/agai/v1/utils"
 )
@@ -24,10 +24,10 @@ This setup keeps things simple — define what you need, skip what you don't.
 */
 
 type Controller struct {
-	controller.Context
+	agai.Controller
 }
 
-func (c *Controller) GET() controller.View {
+func (c *Controller) GET() agai.View {
 
 	component, ok := models.App_state.GetComponent("initialised")
 
@@ -51,13 +51,13 @@ func (c *Controller) GET() controller.View {
 		c.Redirect("/")
 	}
 
-	return controller.EmptyResponse().ToView("register")
+	return agai.EmptyResponse().AsView("register")
 }
 
-func (c *Controller) POST() controller.View {
+func (c *Controller) POST() agai.View {
 	initialised, i_ok := models.App_state.GetComponent("initialised")
 	if !i_ok {
-		c.WithCode("/register", controller.HttpStatus.InternalServerError)
+		c.WithCode("/register", agai.HttpStatus.InternalServerError)
 	}
 
 	first_name, first_name_ok := c.GetInput("firstName").(string)
@@ -68,21 +68,21 @@ func (c *Controller) POST() controller.View {
 
 	if !first_name_ok || !last_name_ok || !email_ok || !password_ok || !confirmPassword_ok {
 		// not ok
-		return (&controller.Response{
+		return (&agai.Response{
 			"error": "Please fill the values correctly",
-		}).ToView("register")
+		}).AsView("register")
 	}
 
 	if password != confirmPassword {
-		return (&controller.Response{
+		return (&agai.Response{
 			"error": "Password and Confirm password do not match",
-		}).ToView("register")
+		}).AsView("register")
 	}
 
 	if hashed_password, err := utils.HashPassword(password); err != nil {
-		return (&controller.Response{
+		return (&agai.Response{
 			"error": "Internal server error | failed to hash password",
-		}).ToView("register")
+		}).AsView("register")
 
 	} else if err := models.Users.Create().
 		Set(models.Users.Fields.UserId).To(email).
@@ -90,18 +90,18 @@ func (c *Controller) POST() controller.View {
 		Set(models.Users.Fields.Password).To(hashed_password).
 		Set(models.Users.Fields.FirstName).To(first_name).
 		Set(models.Users.Fields.LastName).To(last_name).Exec(); err != nil {
-		return (&controller.Response{
+		return (&agai.Response{
 			"error": "Internal server error | failed to Create User Table " + err.Error(),
-		}).ToView("register")
+		}).AsView("register")
 	}
 
 	if err := models.User_details.Create().
 		Set(models.User_details.Fields.UserId).To(email).
 		Set(models.User_details.Fields.FullName).To(first_name + " " + last_name).
 		Set(models.User_details.Fields.AboutMe).To("I am Human").Exec(); err != nil {
-		return (&controller.Response{
+		return (&agai.Response{
 			"error": "Internal server error | failed to Create User Details Table " + err.Error(),
-		}).ToView("register")
+		}).AsView("register")
 	}
 
 	initialised["Value"] = "t"
@@ -111,6 +111,6 @@ func (c *Controller) POST() controller.View {
 	// models.App_state
 	c.Redirect("/")
 
-	return controller.EmptyResponse().ToView("register")
+	return agai.EmptyResponse().AsView("register")
 
 }

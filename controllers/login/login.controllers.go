@@ -3,23 +3,23 @@ package login
 import (
 	components "github.com/pritam-is-next/resume/components"
 	models "github.com/pritam-is-next/resume/models"
-	"github.com/vrianta/agai/v1/controller"
+	"github.com/vrianta/agai/v1"
 	"github.com/vrianta/agai/v1/log"
 	"github.com/vrianta/agai/v1/utils"
 )
 
 type Controller struct {
-	controller.Context
+	agai.Controller
 }
 
-func (c *Controller) GET() controller.View {
+func (c *Controller) GET() agai.View {
 	if c.IsLoggedIn() {
 		log.Debug("User is Alreadt Logged In in Login GET Method")
 		c.Redirect("/admin")
-		return controller.EmptyResponse().ToView("login")
+		return agai.EmptyResponse().AsView("login")
 	}
 
-	response := controller.Response{
+	response := agai.Response{
 		"Title":          "Pritam Dutta",
 		"Heading":        "Pritam Dutta",
 		"NavItems":       models.Nav_items.GetComponents(),
@@ -30,48 +30,48 @@ func (c *Controller) GET() controller.View {
 		"Projects":       components.Projects,
 		"ContactDetails": components.ContactDetails,
 	}
-	return response.ToView("login")
+	return response.AsView("login")
 }
 
-func (c *Controller) POST() controller.View {
+func (c *Controller) POST() agai.View {
 	if c.IsLoggedIn() {
 		c.Redirect("/admin")
 		log.WriteLog("Redirecting to Admin")
-		return controller.EmptyResponse().ToView("login")
+		return agai.EmptyResponse().AsView("login")
 	}
 
 	email := c.GetInput("loginEmail")
 	password := c.GetInput("loginPassword")
 
 	if email == nil || password == nil {
-		r := controller.Response{
+		r := agai.Response{
 			"error": "email or password field is empty",
 		}
-		return r.ToView("login")
+		return r.AsView("login")
 	}
 
 	if user, err := models.Users.Get().
 		Where(models.Users.Fields.UserName).Is(email.(string)).
 		First(); err != nil {
 		log.WriteLog("Got error while fetching ", err.Error())
-		r := controller.Response{
+		r := agai.Response{
 			"email":    email,
 			"password": password,
 			"error":    err.Error(),
 		}
-		return r.ToView("login")
+		return r.AsView("login")
 	} else if user != nil && utils.CheckPassword(user["Password"].(string), password.(string)) {
 		log.Debug("Successfully Logged in")
 		c.Login()
 		c.Redirect("/")
 	} else {
-		r := controller.Response{
+		r := agai.Response{
 			"UserName": email,
 			"Password": password,
 			"error":    "User Name or Password is wrong",
 		}
-		return r.ToView("login")
+		return r.AsView("login")
 	}
 
-	return controller.EmptyResponse().ToView("")
+	return agai.EmptyResponse().AsView("")
 }

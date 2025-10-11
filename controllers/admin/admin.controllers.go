@@ -4,38 +4,38 @@ import (
 	"fmt"
 
 	"github.com/pritam-is-next/resume/models"
-	"github.com/vrianta/agai/v1/controller"
+	"github.com/vrianta/agai/v1"
 	"github.com/vrianta/agai/v1/log"
 )
 
 type Controller struct {
-	controller.Context
+	agai.Controller
 }
 
-func (c *Controller) GET() controller.View {
+func (c *Controller) GET() agai.View {
 
 	if !c.IsLoggedIn() {
 		log.WriteLogf("Unauthorized access to admin panel. Redirecting to login.\n")
 		c.Redirect("/login")
-		return controller.EmptyResponse().ToView("")
+		return agai.EmptyResponse().AsView("")
 	}
 
 	admin_nav_items, err := models.Admin_navItems.Get().Fetch()
 
 	if err != nil {
 		fmt.Println("Failed to fetch the admin_navitems")
-		return controller.EmptyResponse().ToView("admin")
+		return agai.EmptyResponse().AsView("admin")
 	}
 
 	user_details, err := models.User_details.Get().First()
 	if err != nil {
 		fmt.Println("Failed to Fetch User Details")
-		return controller.EmptyResponse().ToView("admin")
+		return agai.EmptyResponse().AsView("admin")
 	}
 
 	// fmt.Println(admin_nav_items)
 
-	response := controller.Response{
+	response := agai.Response{
 		"Title":        "Pritam Dutta",
 		"Heading":      "Admin Panel",
 		"Name":         "Pritam Dutta",
@@ -43,5 +43,5 @@ func (c *Controller) GET() controller.View {
 		"User_Details": user_details,
 	}
 	// fmt.Println("Admin Panel Accessed")
-	return response.ToView("admin")
+	return response.AsView("admin")
 }
