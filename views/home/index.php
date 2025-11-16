@@ -14,7 +14,6 @@
 
 <body data-bs-theme="dark" data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="50">
     <?= include("components.header") ?>
-    <?= print("Testing print") ?>
     <main>
         <section id="home" class="hero-section text-white d-flex align-items-center" style="background-image: url(/static/img/hero-background.avif);">
             <div class="overlay"></div>
