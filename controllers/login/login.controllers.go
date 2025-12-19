@@ -64,6 +64,7 @@ func (c *Controller) POST() agai.View {
 	} else if user != nil && utils.CheckPassword(user["Password"].(string), password.(string)) {
 		log.Debug("Successfully Logged in")
 		c.Login()
+		c.StoreData("uid", email)
 		c.Redirect("/home")
 	} else {
 		r := agai.Response{
