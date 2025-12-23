@@ -36,27 +36,8 @@
                 <a href="" class="d-flex align-items-center mb-3 text-body text-decoration-none">
                     <span class="fs-4 fw-bold"><i class="bi bi-database-fill-gear me-2"></i><?= $$Heading ?></span>
                 </a>
-                <hr class="border-secondary">
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <?php foreach ($$Nav_items as $key => $nav_item): ?>
-                            <?php if ($key == 0): ?>
-
-                                <a href="<?= $nav_item->Href ?>" class="nav-link active bg-body-secondary text-body" aria-current="page">
-                                    <?= $nav_item->Name ?>
-                                </a>
-
-                            <?php else: ?>
-
-                                <a href="<?= $nav_item->Href ?>" class="nav-link text-body">
-                                    <?= $nav_item->Name ?>
-                                </a>
-
-                            <?php endif ?>
-
-                        <?php endforeach ?>
-
-
                     </li>
                 </ul>
                 <hr class="border-secondary">
@@ -78,7 +59,7 @@
                                 <i class="bi bi-sun-fill me-2"></i>Light Mode
                             </button>
                         </li>
-                        <li><a class="dropdown-item text-danger" href="#"><i
+                        <li><a class="dropdown-item text-danger" href="/logout"><i
                                     class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
                     </ul>
                 </div>

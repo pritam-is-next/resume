@@ -120,6 +120,13 @@ func (_c *Controller) GetStoredData(index string) (any, bool) {
 	return data, ok
 }
 
+/*
+ * Get Data From Session Store
+ */
+func (_c *Controller) GetStoredDatas() map[string]any {
+	return _c.session.Data
+}
+
 // Return all Inputs at once
 func (_c *Controller) GetInputs() *map[string]any {
 	if _c.userInputs == nil {
@@ -159,9 +166,9 @@ func (_c *Controller) parseRequest() {
 		}
 	}
 
-	contentType := _c.R.Header.Get("Content-Type")
+	contentType := strings.Split(_c.R.Header.Get("Content-Type"), ";")[0]
 	switch contentType {
-	case "application/json":
+	case "application/json;", "application/json":
 		if p, err := io.ReadAll(_c.R.Body); err != nil {
 			log.Error("Failed to Read the Joson Data, %v\n", err)
 		} else {
@@ -169,7 +176,7 @@ func (_c *Controller) parseRequest() {
 				log.Error("Failed to Render the Json Data, %v\n the Json Data: \n %s", er, string(p))
 			}
 		}
-	case "application/x-www-form-urlencoded":
+	case "application/x-www-form-urlencoded;", "application/x-www-form-urlencoded":
 		// Handle form data (application/x-www-form-urlencoded)
 		if err := _c.R.ParseForm(); err != nil {
 			log.WriteLogf("Error parsing form data | Error - %s\n", err.Error())
@@ -179,7 +186,7 @@ func (_c *Controller) parseRequest() {
 			}
 		}
 
-	case "multipart/form-data":
+	case "multipart/form-data;", "multipart/form-data":
 		// Handle multipart form data (file upload)
 		// Note: This case is handled separately below
 		if err := _c.R.ParseMultipartForm(10 << 20); err != nil { // 10 MB
