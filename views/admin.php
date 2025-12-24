@@ -214,21 +214,12 @@
             </div>
         </div>
     </div>
-
+    
     <!-- Bootstrap JS -->
     <script src="/js/Bootstrap/bootstrap.bundle.min.js"></script>
-    <!-- Theme Toggle Script -->
-    <script>
-        document.getElementById('themeToggle').addEventListener('click', function() {
-            const htmlEl = document.documentElement;
-            const currentTheme = htmlEl.getAttribute('data-bs-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            htmlEl.setAttribute('data-bs-theme', newTheme);
-            this.innerHTML = newTheme === 'dark' ?
-                '<i class="bi bi-sun-fill me-2"></i>Light Mode' :
-                '<i class="bi bi-moon-stars-fill me-2"></i>Dark Mode';
-        });
-    </script>
+    
+    <!-- Theme Toggle Script (MUST be at the very end) -->
+    <script src="/js/themeToggle.js"></script>
 </body>
 
 </html>
