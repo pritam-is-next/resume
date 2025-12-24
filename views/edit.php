@@ -34,11 +34,9 @@
             tabindex="-1" style="width: 280px;">
             <div class="offcanvas-body d-flex flex-column h-100 p-3">
                 <a href="" class="d-flex align-items-center mb-3 text-body text-decoration-none">
-                    <span class="fs-4 fw-bold"><i class="bi bi-database-fill-gear me-2"></i><?= $$Heading ?></span>
+                    <span class="fs-4 fw-bold"><i class="bi bi-person-circle me-2"></i><?= $$Heading ?></span>
                 </a>
                 <ul class="nav nav-pills flex-column mb-auto">
-                    <li class="nav-item">
-                    </li>
                 </ul>
                 <hr class="border-secondary">
                 <div class="dropdown">
@@ -69,11 +67,6 @@
         <!-- Main Content -->
         <div class="flex-grow-1 p-4 bg-gray-900">
             <div class="flex-grow-1 p-4 bg-gray-900">
-
-    <!-- Page Header -->
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2><i class="bi bi-person-circle me-2"></i>My Profile</h2>
-    </div>
 
     <form method="POST" action="/admin/profile" enctype="multipart/form-data">
         <div class="row g-4">

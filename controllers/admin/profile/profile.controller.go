@@ -24,11 +24,11 @@ func (c *Controller) GET() agai.View {
 		return c.Redirect("/login")
 	}
 
-	admin_nav_items, err := models.Admin_navItems.Get().Fetch()
-	if err != nil {
-		fmt.Println("Failed to fetch nav items")
-		return c.View("profile", c.EmptyResponse())
-	}
+	// admin_nav_items, err := models.Admin_navItems.Get().Fetch()
+	// if err != nil {
+	// 	fmt.Println("Failed to fetch nav items")
+	// 	return c.View("profile", c.EmptyResponse())
+	// }
 
 	uid, uid_ok := c.GetStoredData("uid")
 	if !uid_ok {
@@ -43,9 +43,9 @@ func (c *Controller) GET() agai.View {
 	}
 
 	response := agai.Response{
-		"Title":        "My Profile",
-		"Heading":      "Admin Panel",
-		"Nav_items":    admin_nav_items,
+		"Title":        "Profile",
+		"Heading":      "Profile",
+		"Nav_items":    nil,
 		"User_Details": user_details,
 	}
 

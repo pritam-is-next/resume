@@ -22,6 +22,15 @@ var ReponseFuncMaps = template.FuncMap{
 			return 0
 		}
 	},
+	"count": func(v any) int {
+		rv := reflect.ValueOf(v)
+		switch rv.Kind() {
+		case reflect.Array, reflect.Slice, reflect.Map, reflect.Chan, reflect.String:
+			return rv.Len()
+		default:
+			return 0
+		}
+	},
 	"print": func(data any) string {
 		return fmt.Sprintln(data)
 	},
@@ -32,7 +41,7 @@ var ReponseFuncMaps = template.FuncMap{
 			if data, err := t.Execute(c); err != nil {
 				return template.HTML("Failed to Execute the template: " + template_idx + " Error: " + err.Error())
 			} else {
-				// fmt.Println(string(data))
+				fmt.Println(string(data))
 				return template.HTML(string(data))
 			}
 		}
