@@ -213,6 +213,9 @@ func (m *meta) UpdateComponent(id string, value component) error {
 	return nil
 }
 
+/*
+* Give the name of the element of the model exaple if a model has two element id, val then you have to pass id or val to get the data of the id or val
+ */
 func (c component) FieldValue(field string) (any, bool) {
 	val, ok := c[field]
 	return val, ok

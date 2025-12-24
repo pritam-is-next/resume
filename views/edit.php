@@ -68,7 +68,7 @@
         <div class="flex-grow-1 p-4 bg-gray-900">
             <div class="flex-grow-1 p-4 bg-gray-900">
 
-    <form method="POST" action="/admin/profile" enctype="multipart/form-data">
+    <form method="POST" action="/admin/profile/edit" enctype="multipart/form-data">
         <div class="row g-4">
 
             <!-- Profile Info -->

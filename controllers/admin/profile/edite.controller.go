@@ -54,12 +54,12 @@ func (c *Edite) POST() agai.View {
 	if !uid_ok {
 		log.WriteLog("No User ID Found")
 		log.WriteLog(c.GetStoredDatas())
-		return c.Redirect("/admin/profile")
+		return c.Redirect("/admin/profile/edit")
 	}
 	user_details, err := models.User_details.Get().Where(models.Users.Fields.UserId).Is(uid.(string)).First()
 	if err != nil {
 		fmt.Println("User details not found ", err.Error())
-		return c.Redirect("/admin/profile")
+		return c.Redirect("/admin/profile/edit")
 	}
 
 	// Update fields
@@ -80,7 +80,11 @@ func (c *Edite) POST() agai.View {
 		path := config.GetWebConfig().StaticFolders[0] + "/" + file.Filename
 		if _, err := c.SaveFile(file, "./"+path); err == nil {
 			user_details["Avatar"] = "/" + path
+		} else {
+			log.Error("Failed to Save the File : %s", err.Error())
 		}
+	} else {
+		log.Error("no file found with name avatar")
 	}
 
 	query := models.User_details.

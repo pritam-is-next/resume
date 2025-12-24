@@ -5,6 +5,7 @@ import (
 	"html/template"
 	"reflect"
 	"strings"
+	"time"
 )
 
 var ReponseFuncMaps = template.FuncMap{
@@ -41,9 +42,12 @@ var ReponseFuncMaps = template.FuncMap{
 			if data, err := t.Execute(c); err != nil {
 				return template.HTML("Failed to Execute the template: " + template_idx + " Error: " + err.Error())
 			} else {
-				fmt.Println(string(data))
 				return template.HTML(string(data))
+
 			}
 		}
+	},
+	"date": func(format string) string {
+		return time.Now().Format(format)
 	},
 }
