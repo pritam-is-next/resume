@@ -1,7 +1,6 @@
 package template
 
 import (
-	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -46,7 +45,6 @@ func init() {
 
 		}
 	}
-	fmt.Println(templateRegistry)
 }
 
 func RegisterTheme(theme_folder string) {

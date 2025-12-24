@@ -2,7 +2,6 @@ package template
 
 import (
 	"bytes"
-	"fmt"
 	htmltemplate "html/template"
 	"os"
 	"sync"
@@ -71,7 +70,7 @@ func create(file_path, file_name, file_type string, add_js bool) (*Context, erro
 	}
 
 	content := string(utils.ReadFromFile(file_path))
-	fmt.Printf("---- %s ---- \n %s \n", file_path, content)
+	// fmt.Printf("---- %s ---- \n %s \n", file_path, content)
 
 	if !config.GetBuild() && add_js {
 		// Feature: Adding a javascript to impliment hot reload

@@ -193,7 +193,6 @@ func (_c *Controller) parseRequest() {
 			log.WriteLogf("Error parsing multipart form data | Error - %s\n", err.Error())
 			return
 		}
-		// fmt.Println("Post Form: ", _c.R.PostForm)
 		for key, values := range _c.R.PostForm {
 			_c.processPostParams(key, values)
 		}
@@ -224,7 +223,7 @@ func (_c *Controller) processPostParams(key string, values []string) {
 	var err error
 	if len(values) > 1 {
 		if _c.userInputs[key], err = utils.JsonToString(values); err != nil {
-			log.Error("Failed to convert data to JSON : %s", err.Error())
+			// http.Error(sh.W, "Failed to convert data to JSON", http.StatusMethodNotAllowed)
 			return
 		}
 	} else {
