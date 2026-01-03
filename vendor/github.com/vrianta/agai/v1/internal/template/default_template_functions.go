@@ -5,7 +5,6 @@ import (
 	"html/template"
 	"reflect"
 	"strings"
-	"time"
 )
 
 var ReponseFuncMaps = template.FuncMap{
@@ -46,8 +45,5 @@ var ReponseFuncMaps = template.FuncMap{
 				return template.HTML(string(data))
 			}
 		}
-	},
-	"date": func(format string) string {
-		return time.Now().Format(format)
 	},
 }

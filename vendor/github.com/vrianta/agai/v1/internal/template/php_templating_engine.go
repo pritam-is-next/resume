@@ -449,7 +449,7 @@ func convertPHPVarsToGo(expr string) string {
 	expr = varOrChain.ReplaceAllStringFunc(expr, func(s string) string {
 		// detect $$ vs $
 		double := len(s) >= 2 && s[1] == '$'
-		// fmt.Println("len: ", len(s), "s: ", s, " ", s[1])
+		fmt.Println("len: ", len(s), "s: ", s, " ", s[1])
 
 		// object chain?
 		if strings.Contains(s, "->") {
